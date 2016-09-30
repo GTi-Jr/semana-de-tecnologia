@@ -12,7 +12,6 @@ class Challenge::MemberController < ApplicationController
 
   def create_inscription
     @members = params.require(:members)
-    @infos = { conta: '2253-5', agencia: '42324-6', beneficiado: 'Rodrigo Teixeira noronha', banco: 'Banco do Brasil', local: 'Casa do Chico' }
     @errors = []
     @members.each do |index, member|
       @member = @challenge_team.challenge_members.new(member.permit(:name, :email))
@@ -23,7 +22,7 @@ class Challenge::MemberController < ApplicationController
 
     if @errors.empty?
       ChallengeMailer.inscription(@challenge_team).deliver_now
-      ChallengeMailer.info(@challenge_team, @infos).deliver_now
+      ChallengeMailer.info(@challenge_team, current_week[:infos]).deliver_now
       redirect_to :challenge_new_team_inscription, notice: 'Equipe cadastrada con sucesso, você recebera as instruções por email!'
     else
       render :new_inscription, notice: 'Erro ao cadastrar equipe!'
