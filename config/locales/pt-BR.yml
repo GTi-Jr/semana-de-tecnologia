@@ -1,6 +1,83 @@
 # encoding: UTF-8
 # pt-BR translations for Devise
 pt-BR:
+  activerecord:
+    models:
+      admin:
+        one: "Administrador"
+        other: "Administradores"
+      user:
+        one: "Usuário"
+        other: "Usuários"
+      challenge/team:
+        one: "Equipe"
+        other: "Equipes"
+      challenge/member:
+        one: "Membro da equipe"
+        other: "Membros da equipe"
+    attributes:
+      admin:
+        email: "Email"
+      user:
+        email: "Email"
+        name: "Nome"
+        semester: "Semestre"
+        course: "Curso"
+        university: "Universidade"
+        birthday: "Data de nascimento"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+      challenge/team:
+        name: "Nome"
+        email: "Email responsavel"
+        payment_method: "Método de pagamento"
+        limit: "Número de Membros"
+        payment_status: "Status do pagamento"
+      challenge/member:
+        name: "Nome"
+        email: "Email"
+    errors:
+      template:
+        body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
+        header:
+          one: ! 'Não foi possível gravar %{model}: 1 erro'
+          other: ! 'Não foi possível gravar %{model}: %{count} erros.'
+      format: '%{attribute} %{message}'
+      messages:
+        accepted: deve ser aceito
+        blank: não pode ficar em branco
+        present: deve ficar em branco
+        confirmation: não é igual a %{attribute}
+        empty: não pode ficar vazio
+        equal_to: deve ser igual a %{count}
+        even: deve ser par
+        exclusion: não está disponível
+        greater_than: deve ser maior que %{count}
+        greater_than_or_equal_to: deve ser maior ou igual a %{count}
+        inclusion: não está incluído na lista
+        invalid: não é válido
+        less_than: deve ser menor que %{count}
+        less_than_or_equal_to: deve ser menor ou igual a %{count}
+        not_a_number: não é um número
+        not_an_integer: não é um número inteiro
+        odd: deve ser ímpar
+        record_invalid: ! 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          one: "Não é possível excluir o registro pois existe um %{record} dependente"
+          many: "Não é possível excluir o registro pois existem %{record} dependentes"
+        taken: já está em uso
+        too_long: ! 'é muito longo (máximo: %{count} caracteres)'
+        too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
+        wrong_length: não possui o tamanho esperado (%{count} caracteres)
+        other_than: "deve ser diferente de %{count}"
+        invalid_date: "não é uma data válida"
+        invalid_time: "não é uma hora válida"
+        invalid_datetime: "não é uma hora-data válida"
+        is_at: "deve ser igual a %{restriction}"
+        before: "deve ser antes de %{restriction}"
+        on_or_before: deve ser igual ou antes de %{restriction}"
+        after: "deve ser depois de %{restriction}"
+        on_or_after: "deve ser igual ou depois de %{restriction}"
   devise:
     confirmations:
       confirmed: 'Sua conta foi confirmada com sucesso.'
@@ -83,48 +160,6 @@ pt-BR:
       - :year
       - :month
       - :day
-  errors:
-    format: ! '%{attribute} %{message}'
-    messages:
-      accepted: deve ser aceito
-      blank: não pode ficar em branco
-      present: deve ficar em branco
-      confirmation: não é igual a %{attribute}
-      empty: não pode ficar vazio
-      equal_to: deve ser igual a %{count}
-      even: deve ser par
-      exclusion: não está disponível
-      greater_than: deve ser maior que %{count}
-      greater_than_or_equal_to: deve ser maior ou igual a %{count}
-      inclusion: não está incluído na lista
-      invalid: não é válido
-      less_than: deve ser menor que %{count}
-      less_than_or_equal_to: deve ser menor ou igual a %{count}
-      not_a_number: não é um número
-      not_an_integer: não é um número inteiro
-      odd: deve ser ímpar
-      record_invalid: ! 'A validação falhou: %{errors}'
-      restrict_dependent_destroy:
-        one: "Não é possível excluir o registro pois existe um %{record} dependente"
-        many: "Não é possível excluir o registro pois existem %{record} dependentes"
-      taken: já está em uso
-      too_long: ! 'é muito longo (máximo: %{count} caracteres)'
-      too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
-      wrong_length: não possui o tamanho esperado (%{count} caracteres)
-      other_than: "deve ser diferente de %{count}"
-      invalid_date: "não é uma data válida"
-      invalid_time: "não é uma hora válida"
-      invalid_datetime: "não é uma hora-data válida"
-      is_at: "deve ser igual a %{restriction}"
-      before: "deve ser antes de %{restriction}"
-      on_or_before: deve ser igual ou antes de %{restriction}"
-      after: "deve ser depois de %{restriction}"
-      on_or_after: "deve ser igual ou depois de %{restriction}"
-    template:
-      body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
-      header:
-        one: ! 'Não foi possível gravar %{model}: 1 erro'
-        other: ! 'Não foi possível gravar %{model}: %{count} erros.'
   helpers:
     select:
       prompt: Por favor selecione
