@@ -4,6 +4,8 @@ class Challenge::Team < ActiveRecord::Base
   validates_presence_of :name, :limit, :payment_method
   validates :email, presence: true, uniqueness: true
 
+  validates_numericality_of :limit, less_than_or_equal_to: 10, greater_than_or_equal_to: 5, only_integer: true
+
   validate :validate_payment_method
 
   def accepted_payment_methods
