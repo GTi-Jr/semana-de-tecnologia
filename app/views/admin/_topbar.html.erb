@@ -1,13 +1,9 @@
-Top Bar Start -->
 <div class="topbar">
 
   <!-- LOGO -->
   <div class="topbar-left">
-   <%= link_to authenticated_user_root_path,:class => "logo", :method => :get  do%>
-     <i class="zmdi zmdi-layers"></i>
-     <%= image_tag "logos/#{current_week[:logo]}", class: "logo" %>
-   <% end%>
- </div>
+    <%= image_tag "logos/#{current_week[:logo]}", class: "logo" %>
+  </div>
 
  <!-- Button mobile view to collapse sidebar menu -->
  <div class="navbar navbar-default" role="navigation">
