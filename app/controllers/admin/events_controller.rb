@@ -13,7 +13,6 @@ class Admin::EventsController < Admin::BaseController
   # GET /events/new
   def new
     @event = Event.new
-    @event.schedules.build
   end
 
   # GET /events/1/edit
@@ -54,6 +53,6 @@ class Admin::EventsController < Admin::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:name, :description, :facilitator, :limit, :price, :kind, schedules_attributes: [:id, :start_time, :end_time, :_destroy])
+      params.require(:event).permit(:name, :description, :facilitator, :limit, :price, :kind)
     end
 end

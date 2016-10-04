@@ -15,6 +15,24 @@ pt-BR:
       challenge/member:
         one: "Membro da equipe"
         other: "Membros da equipe"
+      event:
+        one: "Evento"
+        other: "Eventos"
+      inscription:
+        one: "Inscrição"
+        other: "Inscrições"
+      package:
+        one: "Pacote"
+        other: "Pacotes"
+      payment:
+        one: "Pagamento"
+        other: "Pagamentos"
+      purchase:
+        one: "Negócio"
+        other: "Negócios"
+      schedule:
+        one: "Horário"
+        other: "Horários"
     attributes:
       admin:
         email: "Email"
@@ -36,6 +54,30 @@ pt-BR:
       challenge/member:
         name: "Nome"
         email: "Email"
+      event:
+        name: "Nome"
+        description: "Descrição"
+        facilitator: "Facilitador"
+        kind: "Tipo"
+        price: "Preço"
+        limit: "Número de vagas"
+      inscription:
+        user_id: "Id do usuário"
+        package_id: "Id do pacote"
+      package:
+        title: "Nome"
+        description: "Descrição"
+        limit: "Número de vagas"
+        price: "Preço"
+        lectures: "Palestras"
+        courses: "Mini-cursos"
+        visits: "Visitas"
+      payment:
+        method: "Métododo de pagamento"
+        price: "Preço"
+      schedule:
+        start_time: "Início"
+        end_time: "Fim"
     errors:
       template:
         body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'

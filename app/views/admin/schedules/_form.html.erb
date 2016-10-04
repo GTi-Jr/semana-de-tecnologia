@@ -11,11 +11,11 @@
   <% end %>
   <div class="form-group">
     <%= f.label :start_time %>
-    <%= f.datetime_local_field :start_time, class: 'form-control date_time' %>
+    <%= schedule_time_field f, :start_time, class: 'form-control date_time' %>
   </div>
   <div class="form-group">
     <%= f.label :end_time %>
-    <%= f.datetime_local_field :end_time, class: 'form-control date_time' %>
+    <%= schedule_time_field f, :end_time, class: 'form-control date_time' %>
   </div>
   <div class="form-group text-right m-b-0">
     <%= button_tag "Save schedule", type:'submit', class:'btn btn-primary waves-effect waves-light' %>

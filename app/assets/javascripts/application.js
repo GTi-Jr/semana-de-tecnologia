@@ -58,6 +58,7 @@ jQuery(document).ready(function() {
   $('.date').mask('00/00/0000', { placeholder: "__/__/____" });
   $('.time').mask('00:00:00');
   $('.date_time').mask('00/00/0000 00:00', {placeholder: "__/__/____ __:__"});
+  $('.float').mask("#,##0.00", {reverse: true});
   $('.cep').mask('00000-000');
   $('.phone').mask('(00) 0 0000-0000', { placeholder: "(99) 9 9999-9999" });
   $('.cpf').mask('000.000.000-00', { reverse: true });

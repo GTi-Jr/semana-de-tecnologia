@@ -26,7 +26,18 @@
     <%= f.label :limit %>
     <%= f.number_field :limit, class: 'form-control' %>
   </div>
-  <%= f.label :schedules %>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.text_field :price, class: 'form-control float' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :kind %>
+    <%= f.select :kind, ['Selecione'], {}, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :schedules %>
+    <input type="" name="" class="form-control" disabled placeholder="Para editar os horários, salve o evento">
+  </div>
   <div class="form-group text-right m-b-0">
     <%= button_tag "Save event", type:'submit', class:'btn btn-primary waves-effect waves-light' %>
   </div>

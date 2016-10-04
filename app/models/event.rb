@@ -1,9 +1,10 @@
 class Event < ActiveRecord::Base
   has_many :schedules
-  accepts_nested_attributes_for :schedules, :reject_if => lambda { |a| a[:start_time].blank? || a[:end_time].blank? }, :allow_destroy => true
   has_many :purchases
   has_many :buyers, through: :purchases
 
+  validates_presence_of :name, :limit, :price
+  validates_numericality_of :price, greater_than_or_equal_to: 0
   @@foo = 0
 
   def remaining
