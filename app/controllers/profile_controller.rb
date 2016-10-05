@@ -11,8 +11,8 @@ class ProfileController < ApplicationController
     package = @user.package
     count = Event.event_kind_count(current_user)
     if package && !package.package_fit?(current_user)
-           redirect_to :events, notice:"seu pacote não está completo."
-
+      redirect_to :events, notice:"seu pacote não está completo."
+    end
   end
 
   def get_user
