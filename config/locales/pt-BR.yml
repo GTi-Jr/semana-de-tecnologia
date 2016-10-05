@@ -61,6 +61,7 @@ pt-BR:
         kind: "Tipo"
         price: "Preço"
         limit: "Número de vagas"
+        schedules: "Horários"
       inscription:
         user_id: "Id do usuário"
         package_id: "Id do pacote"

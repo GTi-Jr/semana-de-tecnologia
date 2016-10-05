@@ -1,10 +1,12 @@
 class Event < ActiveRecord::Base
-  has_many :schedules
-  has_many :purchases
-  has_many :buyers, through: :purchases
+  has_many :schedules, dependent: :restrict_with_error
+  has_many :purchases, dependent: :restrict_with_error
+  has_many :buyers, through: :purchases, dependent: :restrict_with_error
 
   validates_presence_of :name, :limit, :price
   validates_numericality_of :price, greater_than_or_equal_to: 0
+  validates_associated :schedules, :purchases
+
   @@foo = 0
 
   def remaining
