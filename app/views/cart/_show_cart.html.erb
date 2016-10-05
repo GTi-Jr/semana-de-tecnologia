@@ -29,13 +29,9 @@
                 <p><strong> Data:<%=  DateTime.now.strftime(" %d/%m/%Y")%> </strong> </p>
                 <% if @user.package %>
                   <p class="m-t-10"><strong>Pacote inclui: </strong>
-                    <%= @package.lectures%> palestras +
-                      <%= @package.courses%> mini-cursos +
-                        <%= @package.visits%> visitas </p>
+                    
                   <p class="m-t-10"><strong>Eventos adicionados: </strong>
-                    <%= @user_cart[:lectures]%> palestras +
-                      <%= @user_cart[:courses]%> mini-cursos +
-                        <%= @user_cart[:visits]%> visitas </p>
+                   
                   <% else %>
                     <p class="m-t-10"><strong> Você não se inscreveu e nenhum pacote </strong></p>
                     <% end %>

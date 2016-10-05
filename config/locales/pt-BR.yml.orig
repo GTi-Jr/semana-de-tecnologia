@@ -61,7 +61,10 @@ pt-BR:
         kind: "Tipo"
         price: "Preço"
         limit: "Número de vagas"
+<<<<<<< HEAD
         schedules: "Horários"
+=======
+>>>>>>> 96f2cf23fc4bb66701719943dc9d39dc3bf9c240
       inscription:
         user_id: "Id do usuário"
         package_id: "Id do pacote"
@@ -74,7 +77,11 @@ pt-BR:
         courses: "Mini-cursos"
         visits: "Visitas"
       payment:
-        method: "Método de pagamento"
+<<<<<<< HEAD
+        method: "Métododo de pagamento"
+=======
+        method: "Métodod de pagamento"
+>>>>>>> 96f2cf23fc4bb66701719943dc9d39dc3bf9c240
         price: "Preço"
       schedule:
         start_time: "Início"

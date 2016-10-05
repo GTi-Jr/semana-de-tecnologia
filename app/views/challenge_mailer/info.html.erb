@@ -25,13 +25,16 @@
 </tr>
 <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
   <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-    <h5>Informações de conta</h5>
-    <ul>
-      <li>Conta corrente: <%= @infos[:conta] %></li>
-      <li>Agencia: <%= @infos[:agencia] %></li>
-      <li>Beneficiado: <%= @infos[:beneficiado] %></li>
-      <li>Banco: <%= @infos[:banco] %></li>
-    </ul>
-    <p>Em caso de pagamento presencial diriga-se à <%= @infos[:local] %></p>
+    <h4>Pagamento</h4>
+    <% if @infos[:conta] %>
+      <h5>Informações de conta</h5>
+      <ul>
+        <li>Conta corrente: <%= @infos[:conta] %></li>
+        <li>Agencia: <%= @infos[:agencia] %></li>
+        <li>Beneficiado: <%= @infos[:beneficiado] %></li>
+        <li>Banco: <%= @infos[:banco] %></li>
+      </ul>
+    <% end %>
+    <p>Em caso de pagamento presencial diriga-se à/ao <%= @infos[:local] %></p>
   </td>
 </tr>

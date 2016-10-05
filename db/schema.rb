@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928003956) do
+ActiveRecord::Schema.define(version: 20161003152755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20160928003956) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "event_types", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "package_id"
+  end
+
+  add_index "event_types", ["package_id"], name: "index_event_types_on_package_id", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "name",                                              null: false
     t.text     "description"
@@ -90,9 +100,6 @@ ActiveRecord::Schema.define(version: 20160928003956) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.decimal  "price",       precision: 8, scale: 2, default: 0.0
-    t.integer  "courses",                             default: 0
-    t.integer  "lectures",                            default: 0
-    t.integer  "visits",                              default: 0
   end
 
   create_table "payments", force: :cascade do |t|

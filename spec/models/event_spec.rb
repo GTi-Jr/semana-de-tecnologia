@@ -32,7 +32,10 @@ expect(event).to eql(DateTime.new(2016,5,10))
 end
 
 
-it "returns odd numbers" do
+it "returns events_types" do
+	kinds = Event.event_kinds
+
+	expect(kinds).to eql('amor')
 end
 
 end
