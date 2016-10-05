@@ -33,6 +33,8 @@ gem 'cancancan'
 
 gem 'pg'
 
+gem 'rollbar'
+
 gem 'thin'
 
 gem 'redis', '~> 3.3.0'
