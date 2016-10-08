@@ -4,6 +4,8 @@
       <h4 class="header-title m-t-0 m-b-30"><%= titulo_pagina %></h4>
       <%= render 'form' %>
     </div>
+    <div class="panel-footer">
+      <%= link_to 'Voltar', :back, class: 'btn btn-primary waves-effect w-md waves-light m-b-5' %>
+    </div>
   </div>
 </div>
-<%= link_to 'Back', admin_comments_path %>

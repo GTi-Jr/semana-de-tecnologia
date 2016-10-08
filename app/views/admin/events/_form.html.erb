@@ -1,8 +1,6 @@
 <%= form_for [:admin, @event] do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
       <ul>
       <% @event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -32,13 +30,14 @@
   </div>
   <div class="form-group">
     <%= f.label :kind %>
-    <%= f.select :kind, ['Selecione'], {}, class: 'form-control' %>
+    <%= f.select :event_type_id, options_for_select(event_types_to_array), {}, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :schedules %>
     <input type="" name="" class="form-control" disabled placeholder="Para editar os horários, salve o evento">
   </div>
-  <div class="form-group text-right m-b-0">
-    <%= button_tag "Save event", type:'submit', class:'btn btn-primary waves-effect waves-light' %>
+  <div class="row form-group m-b-0">
+    <%= link_to 'Novo tipo de evento', new_admin_event_type_path, class:'btn btn-primary waves-effect waves-light pull-left' %>
+    <%= button_tag action_text, type:'submit', class:'btn btn-primary waves-effect waves-light pull-right' %>
   </div>
 <% end %>

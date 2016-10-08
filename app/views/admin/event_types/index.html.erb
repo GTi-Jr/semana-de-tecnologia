@@ -1,12 +1,12 @@
-  <div class="row">
+<div class="row">
   <div class="col-sm-12">
     <div class="card-box table-responsive">
       <h4 class="header-title m-t-0 m-b-30"><%= titulo_pagina %></h4>
       <div class="row">
         <div class="col-sm-6">
           <div class="m-b-30">
-            <%= link_to(new_admin_comment_path, class:'btn btn-primary waves-effect waves-light') do %>
-            Novo recado <i class="fa fa-plus"></i>
+            <%= link_to(new_admin_event_type_path, class:'btn btn-primary waves-effect waves-light') do %>
+            Novo Tipo de Evento <i class="fa fa-plus"></i>
             <% end %>
           </div>
         </div>
@@ -15,25 +15,23 @@
         <table class="table table-striped" id="datatable">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Description</th>
+              <th>Name</th>
               <th data-orderable="false"></th>
             </tr>
           </thead>
           <tbody>
-            <% @comments.each do |comment| %>
+            <% @event_types.each do |event_type| %>
             <tr>
-              <td><%= comment.title %></td>
-              <td><%= comment.description %></td>
-              <td class="actions pull-right">
+              <td><%= event_type.name %></td>
+              <td class="pull-right">
                 <div class="btn-group m-b-10">
-                  <%= link_to admin_comment_path(comment), class: 'btn btn-primary btn-icon waves-effect' do %>
+                  <%= link_to admin_event_type_path(event_type), class: 'btn btn-primary btn-icon waves-effect' do %>
                     <i class="fa fa-eye"></i>
                   <% end %>
-                  <%= link_to edit_admin_comment_path(comment), class: 'btn btn-primary btn-icon waves-effect' do %>
+                  <%= link_to edit_admin_event_type_path(event_type), class: 'btn btn-primary btn-icon waves-effect' do %>
                     <i class="fa fa-edit"></i>
                   <% end %>
-                  <%= link_to admin_comment_path(comment), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-icon waves-effect' do %>
+                  <%= link_to admin_event_type_path(event_type), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-icon waves-effect' do %>
                     <i class="fa fa-trash"></i>
                   <% end %>
                 </div>

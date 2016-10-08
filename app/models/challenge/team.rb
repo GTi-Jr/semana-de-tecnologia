@@ -1,5 +1,5 @@
 class Challenge::Team < ActiveRecord::Base
-  has_many :challenge_members,  class_name: 'Challenge::Member', foreign_key: :challenge_team_id, dependent: :restrict_with_error
+  has_many :challenge_members,  class_name: 'Challenge::Member', foreign_key: :challenge_team_id, dependent: :destroy
 
   validates_presence_of :name, :limit, :payment_method
   validates :email, presence: true, uniqueness: true

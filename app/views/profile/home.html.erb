@@ -6,7 +6,7 @@
         <div class="profile-info-detail">
           <h3 class="m-t-0 m-b-0"><%= @user.name %></h3>
           <p class="text-muted m-b-20"><i><%= @user.course %></i></p>
-          
+
           <div class="button-list m-t-20">
             <button type="button" class="btn btn-facebook btn-sm waves-effect waves-light">
              <i class="fa fa-facebook"></i>
@@ -59,7 +59,7 @@
     </div>
 
     <div class="card-box">
-      <h4 class="header-title m-t-0 m-b-30"><i class="zmdi zmdi-calendar m-r-5"></i> Meus eventos</h4>
+      <h4 class="header-title m-t-0 m-b-30"><i class="zmdi zmdi-calendar m-r-5"></i> Minha programação</h4>
 
       <ul class="list-group m-b-0 user-list">
         <% if @user.events.empty? %>

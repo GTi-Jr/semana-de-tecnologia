@@ -1,4 +1,4 @@
-class Admin::ChallengeTeamsController < Admin::BaseController
+class Admin::TeamsController < Admin::BaseController
   before_action :set_challenge_team, only: [:show, :edit, :update, :destroy, :confirm_payment]
 
   # GET /admin/users

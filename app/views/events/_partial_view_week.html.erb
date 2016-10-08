@@ -1,38 +1,38 @@
-   <% @eventsDays.each do |days| %>
-                  <div class="tab-pane fade" id="tab<%= @number%>" >
-                     <% @scheduleHash[days].each do |schedule| %>
-                     <div class="col-md-4">
-                        <div class="text-center card-box">
-                           <div>
-                              <p> coloque a imagem aqui</p>
-                              <p class="text-muted font-13 m-b-30">
-                                 <%= schedule.event.description%>
-                              </p>
-                              <div class="text-left">
-                                 <p class="text-muted font-13"><strong>Nome do evento:</strong> <span class="m-l-15"><%= schedule.event.name%></span></p>
-                                  <p class="text-muted font-13"><strong>Vagas:</strong> <span class="m-l-15"><%= schedule.event.remaining%></span></p>
-                                 <p class="text-muted font-13"><strong>Tipo de evento:</strong> <span class="m-l-15"><%= schedule.event.kind%></span></p>
-                                  <p class="text-muted font-13"><strong>Início:</strong> <span class="m-l-15"><%= schedule.start_time.strftime("%H : %M")%>h</span></p>
-                              </div>
-                              <%if current_user.is_there_payment?%>
-                              <% cart_action = schedule.event.cart_action(@user.id) %>
-                              <% if cart_action == "Add to" %>
-                              <%= button_to add_to_path(schedule.event), :class => "btn btn-icon waves-effect waves-light btn-success m-b-5",   :method => :put do %>
-                             <i class=" zmdi zmdi-plus-circle-o"></i>
-                              <span >Adicionar</span>
-                              <% end %>
-                              <% else %>
-                              <%= button_to remove_from_path(schedule.event),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5",  :method => :put do %>
-                              <i class="zmdi zmdi-minus-circle-outline"></i>
-                              <span> Remover</span>
-                                                            <% end %>
+<% @eventsDays.each do |days| %>
+  <div class="tab-pane fade" id="tab<%= @number%>">
+    <% @scheduleHash[days].each do |schedule| %>
+      <div class="col-md-4">
+        <div class="text-center card-box">
+          <div>
+            <p class="font-15 m-b-30">
+               <%= schedule.event.name%>
+            </p>
+            <div class="text-left">
+              <p class="text-muted font-13"><strong>Descrição da programação:</strong><span class="m-l-15"><%= schedule.event.description%></span></p>
+              <p class="text-muted font-13"><strong>Vagas:</strong><span class="m-l-15"><%= schedule.event.remaining%></span></p>
+              <p class="text-muted font-13"><strong>Tipo de evento:</strong><span class="m-l-15"><%= schedule.event.event_type.name%></span></p>
+              <p class="text-muted font-13"><strong>Início:</strong><span class="m-l-15"><%= schedule.start_time.strftime("%H:%M")%>h</span></p>
+              <p class="text-muted font-13"><strong>Término:</strong><span class="m-l-15"><%= schedule.end_time.strftime("%H:%M")%>h</span></p>
+            </div>
+            <% if current_user.is_there_payment?%>
+              <% cart_action = schedule.event.cart_action(@user.id) %>
+                <% if cart_action == "Add to" %>
+                  <%= button_to add_to_path(schedule.event), :class => "btn btn-icon waves-effect waves-light btn-success m-b-5",   :method => :put do %>
+                    <i class=" zmdi zmdi-plus-circle-o"></i>
+                    <span>Adicionar</span>
+                    <% end %>
+                      <% else %>
+                        <%= button_to remove_from_path(schedule.event),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5",  :method => :put do %>
+                          <i class="zmdi zmdi-minus-circle-outline"></i>
+                          <span> Remover</span>
+                          <% end %>
+                            <%end%>
                               <%end%>
-                              <%end%>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- end col -->
-                     <%end%>
-                  </div>
-                  <% @number = @number +1%>
-                  <%end%>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+      <%end%>
+  </div>
+  <% @number = @number +1%>
+    <%end%>

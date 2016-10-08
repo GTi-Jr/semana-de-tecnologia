@@ -23,8 +23,11 @@
                   <%= @package.description %>
                 </p>
                 <p>
-                  <strong>Cursos/Palestras/Visitas: </strong>
-                  <%= @package.courses %>/<%= @package.lectures %>/<%= @package.visits %>
+                  <strong>Programações: </strong>
+                  </br>
+                  <% @package.packages_events_types.each do |package_event_type| %>
+                    <%= package_event_type.limit %> <%= package_event_type.event_type.name.pluralize(package_event_type.limit) %>,
+                  <% end %>
                 </p>
                 <p>
                   <strong>Valor: </strong><%= @package.price %>

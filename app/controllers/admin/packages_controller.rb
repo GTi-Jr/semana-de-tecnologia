@@ -43,8 +43,11 @@ class Admin::PackagesController < Admin::BaseController
 
   # DELETE /packages/1
   def destroy
-    @package.destroy
-    redirect_to admin_packages_url, notice: 'Package was successfully destroyed.'
+    if @package.destroy
+      redirect_to admin_events_url, notice: 'Package was successfully destroyed.'
+    else
+      redirect_to admin_events_url, notice: @package.errors.full_messages[0]
+    end
   end
 
   private

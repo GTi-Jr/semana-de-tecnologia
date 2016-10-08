@@ -5,7 +5,8 @@
       <%= render 'form' %>
     </div>
     <div class="panel-footer">
-      <%= link_to 'Mostrar', [:admin, @event], class: 'btn btn-primary waves-effect w-md waves-light m-b-5' %>
+      <%= link_to 'Apagar', [:admin, @event_type], method: :delete, class: 'btn btn-primary waves-effect w-md waves-light m-b-5' %>
+      <%= link_to 'Voltar', :back, class: 'btn btn-primary waves-effect w-md waves-light m-b-5' %>
     </div>
   </div>
 </div>

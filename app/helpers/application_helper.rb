@@ -1,45 +1,6 @@
 module ApplicationHelper
   def current_week
-    # case Rails.application.secrets.week_id
-    # when "semana_test"
-    #   @week = {
-    #     name: 'Semana em Teste',
-    #     sigla: 'SeT',
-    #     colors: { primary: '#871328', default: '#FFFFFF' },
-    #     logo: 'semana_test-logo.png',
-    #     avatar: '',
-    #     infos: { conta: '2253-5', agencia: '42324-6', beneficiado: 'Rodrigo Teixeira noronha', banco: 'Banco do Brasil', local: 'Casa do Chico' }
-    #   }
-    # when "stem"
-    #   @week = {
-    #     name: 'Semana de Tecnologia da Engenharia Mecânica',
-    #     sigla: 'STEM',
-    #     colors: [primary: '#871328'],
-    #     logo: 'stem-logo.png',
-    #     avatar: 'stem-avatar.png',
-    #     infos: { conta: '2253-5', agencia: '42324-6', beneficiado: 'Rodrigo Teixeira noronha', banco: 'Banco do Brasil', local: 'Casa do Chico' }
-    #   }
-    # when "sec"
-    #   @week = {
-    #     name: 'Semana da Engenharia Civil',
-    #     sigla: 'SEC',
-    #     colors: [base: '#FFFFFF'],
-    #     logo: 'sec-logo.png',
-    #     infos: { conta: '2253-5', agencia: '42324-6', beneficiado: 'Rodrigo Teixeira noronha', banco: 'Banco do Brasil', local: 'Casa do Chico' }
-    #   }
-    # when "setic"
-    #   @week = {
-    #     name: 'Semana de Tecnologia e Inovação',
-    #     sigla: 'Setic', colors: [base: '#FFFFFF'],
-    #     logo: 'setic-logo.png',
-    #     infos: { conta: '2253-5', agencia: '42324-6', beneficiado: 'Rodrigo Teixeira noronha', banco: 'Banco do Brasil', local: 'Casa do Chico' }
-    #   }
-    # else
-    #   @week = { infos: { conta: '2253-5', agencia: '42324-6', beneficiado: 'Rodrigo Teixeira noronha', banco: 'Banco do Brasil', local: 'Casa do Chico' } }
-    # end
-
     config = YAML.load_file("#{Rails.root.to_s}/config/weeks.yml")
-
     config[Rails.application.secrets.week_id].deep_symbolize_keys
   end
 
@@ -58,5 +19,31 @@ module ApplicationHelper
 
   def payment_status(status)
     status ? 'Pago' : 'Pendente'
+  end
+
+  def human_models custom_controller_path = controller_path
+    if %w( teams members ).include? custom_controller_path
+      custom_controller_path = "challenge/#{custom_controller_path}"
+    end
+    plural = custom_controller_path.classify.constantize.model_name.human count: 2
+  end
+
+  def human_model custom_controller_path = controller_path
+    singular = custom_controller_path.classify.constantize.model_name.human
+  end
+
+  def titulo_pagina custom_controller_path = controller.controller_name
+    titulos = {
+      index: -> () { "Listando #{human_models custom_controller_path}" },
+      show: -> () { "Visualizando #{human_model custom_controller_path}" },
+      new: -> () { "Cadastrando #{human_model custom_controller_path}" },
+      edit: -> () { "Editando #{human_model custom_controller_path}" }
+    }
+
+    titulos[action_name.to_sym].try(:call) || "#{custom_controller_path}##{action_name}"
+  end
+
+  def action_text custom_controller_path = controller.controller_name
+    "Salvar #{human_model custom_controller_path}"
   end
 end

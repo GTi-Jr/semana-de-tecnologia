@@ -24,7 +24,7 @@
                                                     <h4 class="text-<%= schedule.event.circleColor%>"><%= schedule.event.name%>
                                                    <p class="timeline-date text-muted"><small><%=schedule.start_time.strftime("%H : %M")%>h</small></p>
                                                   <p><%=schedule.event.description%></p>
-                                                  <p><%=schedule.event.kind%></p>
+                                                  <p><%=schedule.event.event_type.name%></p>
                                                   <div class = " album">
                                                   <% if current_user.is_there_payment?%>
                                             <%= button_to remove_from_path(schedule.event),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5",  :method => :put do %>

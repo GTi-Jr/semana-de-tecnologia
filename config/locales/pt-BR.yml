@@ -1,6 +1,9 @@
 # encoding: UTF-8
 # pt-BR translations for Devise
 pt-BR:
+  actions:
+    new: "Novo"
+    edit: Editar
   activerecord:
     models:
       admin:
@@ -16,8 +19,11 @@ pt-BR:
         one: "Membro da equipe"
         other: "Membros da equipe"
       event:
-        one: "Evento"
-        other: "Eventos"
+        one: "Programação"
+        other: "Programações"
+      event_type:
+        one: "Tipo de Programação"
+        other: "Tipos de Programação"
       inscription:
         one: "Inscrição"
         other: "Inscrições"
@@ -33,6 +39,12 @@ pt-BR:
       schedule:
         one: "Horário"
         other: "Horários"
+      team:
+        one: "Equipe"
+        other: "Equipes"
+      comment:
+        one: "Recado"
+        other: "Recados"
     attributes:
       admin:
         email: "Email"
@@ -62,6 +74,8 @@ pt-BR:
         price: "Preço"
         limit: "Número de vagas"
         schedules: "Horários"
+      event_type:
+        name: "Nome"
       inscription:
         user_id: "Id do usuário"
         package_id: "Id do pacote"
@@ -70,15 +84,16 @@ pt-BR:
         description: "Descrição"
         limit: "Número de vagas"
         price: "Preço"
-        lectures: "Palestras"
-        courses: "Mini-cursos"
-        visits: "Visitas"
+        inscriptions: "Inscrições"
       payment:
         method: "Método de pagamento"
         price: "Preço"
       schedule:
         start_time: "Início"
         end_time: "Fim"
+      comment:
+        title: "Titulo"
+        description: "Descrição"
     errors:
       template:
         body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'

@@ -1,40 +1,43 @@
 <% provide(:title, "Meu carrinho") %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="clearfix">
-            <div class="pull-left">
-              <h3 class="logo">Lista de compras</h3>
-            </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="clearfix">
+          <div class="pull-left">
+            <h3 class="logo">Lista de compras</h3>
           </div>
-          <hr>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="pull-right ">
-                <h4><br>
-      <strong> Dados do comprador:</strong>
-   </h4>
-                <p><strong> Nome: </strong>
-                  <%= current_user.name%>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="pull-right ">
+              <h4><br>
+                <strong> Dados do comprador:</strong>
+              </h4>
+              <p><strong> Nome: </strong>
+                <%= current_user.name%>
+              </p>
+              <p class="m-t-10"><strong> Email: </strong>
+                <%= current_user.email %>
+              </p>
+            </div>
+            <div class="pull-left ">
+              <h4><br>
+               <strong> Dados da compra:</strong>
+             </h4>
+             <p><strong> Data:<%=  DateTime.now.strftime(" %d/%m/%Y")%> </strong> </p>
+             <% if @user.package %>
+                <p class="m-t-10"><strong>Pacote inclui: </strong>
+                  <% @user.package.packages_events_types.each do |package_event_type| %>
+                    <%= package_event_type.limit %> <%= package_event_type.event_type.name.pluralize(package_event_type.limit) %>,
+                  <% end %>
                 </p>
-                <p class="m-t-10"><strong> Email: </strong>
-                  <%=current_user.email %>
+                <p class="m-t-10"><strong>Eventos adicionados: </strong>
                 </p>
-              </div>
-              <div class="pull-left ">
-                <h4><br>
-   <strong> Dados da compra:</strong>
-</h4>
-                <p><strong> Data:<%=  DateTime.now.strftime(" %d/%m/%Y")%> </strong> </p>
-                <% if @user.package %>
-                  <p class="m-t-10"><strong>Pacote inclui: </strong>
-                    
-                  <p class="m-t-10"><strong>Eventos adicionados: </strong>
-                   
-                  <% else %>
-                    <p class="m-t-10"><strong> Você não se inscreveu e nenhum pacote </strong></p>
-                    <% end %>
+            <% else %>
+              <p class="m-t-10"><strong> Você não se inscreveu e nenhum pacote </strong></p>
+            <% end %>
               </div>
             </div>
             <!-- end col -->
@@ -57,27 +60,27 @@
                   </thead>
                   <tbody>
                     <% @cart_events.each do |cart| %>
-                      <tr>
-                        <td>
-                          <%=cart.name%>
-                        </td>
-                        <td>
-                          <%=cart.description%>
-                        </td>
-                        <td>
-                          <%=cart.kind%>
-                        </td>
-                        <td>R$
-                          <%= cart.price %>
-                        </td>
-                        <td>
-                          <%= button_to remove_from_path(cart.id), :class => "btn btn-icon waves-effect waves-light btn-danger m-b-5", :method => :put do %>
-                            <i class="zmdi zmdi-minus-circle-outline"></i>
-                            <span> Remover</span>
-                            <%end%>
-                        </td>
-                      </tr>
-                      <%end%>
+                    <tr>
+                      <td>
+                        <%=cart.name%>
+                      </td>
+                      <td>
+                        <%=cart.description%>
+                      </td>
+                      <td>
+                        <%=cart.event_type.name%>
+                      </td>
+                      <td>R$
+                        <%= cart.price %>
+                      </td>
+                      <td>
+                        <%= button_to remove_from_path(cart.id), :class => "btn btn-icon waves-effect waves-light btn-danger m-b-5", :method => :put do %>
+                        <i class="zmdi zmdi-minus-circle-outline"></i>
+                        <span> Remover</span>
+                        <%end%>
+                      </td>
+                    </tr>
+                    <%end%>
                   </tbody>
                 </table>
               </div>
@@ -88,27 +91,27 @@
               <div class="clearfix m-t-40">
                 <h5 class=" text-inverse font-600">Qual a forma de pagamento?</h5>
                 <%= form_for(@payment , url: cart_checkout_path ,html: {class: 'form-horizontal '}) do |f| %>
-                  <div class="form-group">
-                    <%= f.select :method, @payment.accepted_payment_methods, {}, {class: 'form-control' } %>
-                  </div>
+                <div class="form-group">
+                  <%= f.select :method, @payment.accepted_payment_methods, {}, {class: 'form-control' } %>
+                </div>
               </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 col-md-offset-3">
               <% if @user.package %>
-                <p> <b class=text-danger>Atenção:</b> em qualquer compra feita fora da cobertura do pacote, será cobrado o preço avulso dos eventos, exceto as que ultrapassarem as quantidades especificadas(sendo cobrado valor do pacote + o total dos eventos adicionais).</p>
-                <p class="text-right"><b>Tipo de desconto:</b>
-                  <%= @package.title %>
-                </p>
-                <% else %>
-                  <p class="m-t-10"><strong> Você não se inscreveu e nenhum pacote </strong></p>
-                  <% end %>
-                    <h3 class="text-right">R$ <%= @cart_total %>  </h3>
+              <p> <b class=text-danger>Atenção:</b> em qualquer compra feita fora da cobertura do pacote, será cobrado o preço avulso dos eventos, exceto as que ultrapassarem as quantidades especificadas(sendo cobrado valor do pacote + o total dos eventos adicionais).</p>
+              <p class="text-right"><b>Tipo de desconto:</b>
+                <%= @package.title %>
+              </p>
+              <% else %>
+              <p class="m-t-10"><strong> Você não se inscreveu e nenhum pacote </strong></p>
+              <% end %>
+              <h3 class="text-right">R$ <%= @cart_total %>  </h3>
             </div>
           </div>
           <div class="hidden-print">
             <div class="pull-right">
               <%= button_tag "Finalizar compra", class:  "btn btn-custom btn-bordred btn-block waves-effect waves-light"  %>
-                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

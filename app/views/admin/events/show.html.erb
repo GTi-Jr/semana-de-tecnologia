@@ -27,6 +27,9 @@
                   <strong>Valor: </strong><%= @event.price %>
                 </p>
                 <p>
+                  <strong>Tipo: </strong><%= @event.event_type.try(:name) %>
+                </p>
+                <p>
                   <strong>Total de inscritos: </strong><%= @event.buyers.count %>
                 </p>
                 <p>

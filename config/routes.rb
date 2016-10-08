@@ -75,13 +75,14 @@ Rails.application.routes.draw do
   namespace :admin do
     authenticated :admin do
       resources :events do
-        resources :schedules, path: 'schedules'
+        resources :schedules, except: [:index, :show]
       end
+      resources :event_types, except: [:show]
       resources :packages
       resources :users
       resources :comments
-      resources :challenge_teams, except: [:new, :create, :edit, :update]
-      post 'challenge_teams/:id/confirm_payment' => 'challenge_teams#confirm_payment', as: :challenge_team_confirm_payment
+      resources :teams, except: [:new, :create, :edit, :update], scope: "teams"
+      post 'teams/:id/confirm_payment' => 'teams#confirm_payment', as: :team_confirm_payment
       patch 'users/:user_id/change_payment' => 'users#set_payment', as: :change_user_payment
       patch 'users/:user_id/remove_from_event/:id' => 'users#remove_from_event', as: :remove_user_from_event
       patch 'users/:user_id/remove_from_all_events' => 'users#remove_from_all_events', as: :remove_user_from_all_events

@@ -55,6 +55,6 @@ class Admin::EventsController < Admin::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:name, :description, :facilitator, :limit, :price, :kind)
+      params.require(:event).permit(:name, :description, :facilitator, :limit, :price, :event_type_id)
     end
 end
