@@ -25,7 +25,12 @@
         <li class="text-muted menu-title">Navegação</li>
         <li>
           <%= link_to admin_events_path do %>
-            <i class="ti-time"></i> <span> Eventos </span>
+            <i class="ti-time"></i> <span> Programações </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_event_types_path do %>
+            <i class="ti-bookmark"></i> <span> Cat. de Programação </span>
           <% end %>
         </li>
         <li>
