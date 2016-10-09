@@ -1,8 +1,7 @@
 class CartController < ProfileController
   before_action :verify_cart_count, only: [:create]
   def show
-    cart_ids = $redis.smembers current_user_cart
-    @cart_events = Event.find(cart_ids)
+    @cart_events = @user.events
     @events = Event.all
     @eventsDays = Event.days
     @scheduleHash = Event.appointments
@@ -37,6 +36,8 @@ class CartController < ProfileController
       case payment_params[:method]
       when @payment.accepted_payment_methods[0]
         @pag = pag_seguro(@total_price, @user)
+        byebug
+
         if @pag.errors.empty? && @payment.save
           redirect_to @pag.url
         else
@@ -61,7 +62,7 @@ class CartController < ProfileController
       end
       @payment.pending
     else
-      render 'new', notice: 'Seu carrinho está vazio!'
+      render :show, notice: 'Seu carrinho está vazio!'
     end
   end
 
@@ -82,7 +83,6 @@ class CartController < ProfileController
   def add
     @purchase = Purchase.new(buyer_id: @user.id, event_id: params[:id])
     if @purchase.save
-      $redis.sadd current_user_cart, params[:id]
       redirect_to :back
     else
       redirect_to :back, notice: @purchase.errors.full_messages.first || 'Não há mais vagas disponíveis para este evento'
@@ -90,7 +90,6 @@ class CartController < ProfileController
   end
 
   def remove
-    $redis.srem current_user_cart, params[:id]
     Purchase.delete_purchases(current_user, params[:id])
     redirect_to :back
   end
@@ -128,6 +127,7 @@ class CartController < ProfileController
       amount: value.to_f
     }
     # end
+    byebug
     response = payment.register
   end
 

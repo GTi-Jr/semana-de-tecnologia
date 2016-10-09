@@ -1,23 +1,28 @@
-   <div class="hidden-print">
-            <div class="pull-left">
-              <h4 class=" text-inverse font-600"> FORMA DE PAGAMENTO</h4>
-           
-
-           <div class="form-group m-b-0">
-         <h5 class=" text-inverse font-600"><%= current_user.payment.method%></h5>
-         
-        </div>
-           <div class="form-group m-b-0">
-         <p class="form-control-static"><b><b>Banco:</b></b> BB</p>
-         
-        </div>
-           <div class="form-group m-b-0">
-         <p class="form-control-static"><b>Ag:</b> 4439-3</p>
-         
-        </div>
-              <div class="form-group m-b-0">
-         <p class="form-control-static"><b>Conta:</b> 16.625-1</p>
-         
-        </div>
-        </div>
-      </div>
+<div class="hidden-print">
+  <div class="pull-left">
+    <h4 class=" text-inverse font-600"> FORMA DE PAGAMENTO</h4>
+    <div class="form-group m-b-0">
+      <h5 class=" text-inverse font-600"><%= current_user.payment.method%></h5>
+    </div>
+    <div class="form-group m-b-0">
+      <p class="form-control-static"><b><b>Banco:</b></b>
+        <%= current_week[:infos][:banco] %>
+      </p>
+    </div>
+    <div class="form-group m-b-0">
+      <p class="form-control-static"><b>Ag:</b>
+        <%= current_week[:infos][:agencia] %>
+      </p>
+    </div>
+    <div class="form-group m-b-0">
+      <p class="form-control-static"><b>Conta:</b>
+        <%= current_week[:infos][:conta] %>
+      </p>
+    </div>
+    <div class="form-group m-b-0">
+      <p class="form-control-static"><b>Favorecido:</b>
+        <%= current_week[:infos][:beneficiado] %>
+      </p>
+    </div>
+  </div>
+</div>

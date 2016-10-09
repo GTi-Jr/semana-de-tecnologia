@@ -32,6 +32,12 @@ sec:
     primary: 87132
     default: FFFFFF
   logo: sec-logo.png
+  infos:
+    conta: 23608-X
+    agencia: 4439-3
+    beneficiado: Jessyca Rosa Sena
+    banco: Banco do Brasil
+    local: PET da Engenharia Civil
 sepro:
   <<: *default
 seq:

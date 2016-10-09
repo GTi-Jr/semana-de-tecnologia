@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   has_many :buyers, through: :purchases, dependent: :restrict_with_error
   belongs_to :event_type
 
-  validates_presence_of :name, :limit, :price
+  validates_presence_of :name, :limit, :price, :event_type_id
   validates_numericality_of :price, :limit, greater_than_or_equal_to: 0
   validates_associated :schedules, :purchases
 
@@ -144,10 +144,10 @@ class Event < ActiveRecord::Base
 #final
 
   def cart_action(current_user_id)
-   if $redis.sismember "cart#{current_user_id}", id
-    "Remove from"
-   else
-    "Add to"
+    if $redis.sismember "cart#{current_user_id}", id
+      "Remove from"
+    else
+      "Add to"
     end
   end
 

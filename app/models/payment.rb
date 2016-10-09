@@ -7,7 +7,7 @@ class Payment < ActiveRecord::Base
   before_validation :waiting, on: :create
 
   def accepted_payment_methods
-    ['PagSeguro', 'Depósito', 'Transferência', 'Em Espécie(Presencial)']
+    ['PagSeguro', 'Depósito', 'Transferência', 'Presencial']
   end
 
   def accepted_payment_status

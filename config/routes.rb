@@ -78,7 +78,9 @@ Rails.application.routes.draw do
         resources :schedules, except: [:index, :show]
       end
       resources :event_types, except: [:show]
-      resources :packages
+      resources :packages do
+        resources :packages_events_types, only: [:create, :destroy]
+      end
       resources :users
       resources :comments
       resources :teams, except: [:new, :create, :edit, :update], scope: "teams"

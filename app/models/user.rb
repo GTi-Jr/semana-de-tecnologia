@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_one :payment
-  has_many :purchases, foreign_key: :buyer_id
+  has_many :purchases, foreign_key: :buyer_id, dependent: :destroy
   has_many :events, through: :purchases
-  has_one :inscription
+  has_one :inscription, dependent: :destroy
   has_one :package, through: :inscription
   validates_associated :package
 

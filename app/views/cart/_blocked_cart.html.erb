@@ -32,10 +32,11 @@
             <% if @user.package %>
               <br>
               <p class="m-t-10">
-                <strong>Pacote inclui: </strong>
-                <%= @package.lectures%> palestras +
-                <%= @package.courses%> mini-cursos +
-                <%= @package.visits %> visitas
+                <p class="m-t-10"><strong>Pacote inclui: </strong>
+                  <% @user.package.packages_events_types.each do |package_event_type| %>
+                    <%= package_event_type.limit %> <%= package_event_type.event_type.name.pluralize(package_event_type.limit) %>,
+                  <% end %>
+                </p>
               </p>
               <p class="m-t-10">
                 <strong>Eventos adicionados: </strong>
@@ -75,7 +76,7 @@
                         <%= cart.description%>
                       </td>
                       <td>
-                        <%= cart.kind %>
+                        <%= cart.event_type.name %>
                       </td>
                       <td>
                         <%= cart.price %>

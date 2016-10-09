@@ -24,6 +24,9 @@ pt-BR:
       event_type:
         one: "Tipo de Programação"
         other: "Tipos de Programação"
+      package_event_type:
+        one: "Tipo de Pacote/Evento"
+        one: "Tipos de Pacote/Evento"
       inscription:
         one: "Inscrição"
         other: "Inscrições"
@@ -76,6 +79,9 @@ pt-BR:
         schedules: "Horários"
       event_type:
         name: "Nome"
+      package_event_type:
+        event_type: "Tipo de Programação"
+        limit: "Quantidade"
       inscription:
         user_id: "Id do usuário"
         package_id: "Id do pacote"

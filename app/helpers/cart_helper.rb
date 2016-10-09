@@ -2,16 +2,18 @@ module CartHelper
 
   def render_cart
     if current_user.is_there_payment?
-      render :partial => 'cart/show_cart' 
+      render :partial => 'cart/show_cart'
     else
-      render :partial => 'cart/blocked_cart' 
+      render :partial => 'cart/blocked_cart'
     end
   end
+
   def render_payment_form
-    if current_user.payment.method == 'Depósito bancário'
-      render :partial => 'cart/partial_show_deposito' 
-    else current_user.payment.method  == 'Em espécie(presencial)'
-      render :partial => 'cart/partial_show_presencial' 
+    case current_user.payment.method
+    when current_user.payment.accepted_payment_methods[1], current_user.payment.accepted_payment_methods[2]
+      render :partial => 'cart/partial_show_deposito'
+    when @payment.accepted_payment_methods[3]
+      render :partial => 'cart/partial_show_presencial'
     end
   end
 end

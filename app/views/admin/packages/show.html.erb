@@ -9,6 +9,9 @@
             <a href="#info" data-toggle="tab" aria-expanded="true">Sobre</a>
           </li>
           <li class="">
+            <a href="#event_types" data-toggle="tab" aria-expanded="false">Adicionar tipos e programação</a>
+          </li>
+          <li class="">
             <a href="#users" data-toggle="tab" aria-expanded="false">Inscritos</a>
           </li>
         </ul>
@@ -43,6 +46,37 @@
                 </p>
               </div>
             </div>
+          </div>
+          <div id="event_types" class="tab-pane fade">
+            <% if  @package.packages_events_types.empty? %>
+                  <p>Nenhum tipo de evento cadastrado</p>
+            <% else %>
+              <div class="responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Tipo de Programação</th>
+                      <th>Limite</th>
+                      <th data-orderable="false"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @package.packages_events_types.each do |package_event_type| %>
+                    <tr>
+                      <td><%= package_event_type.event_type.name %></td>
+                      <td><%= package_event_type.limit %></td>
+                      <td class="actions pull-right">
+                        <%= link_to admin_package_package_event_type_path(@package, package_event_type), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-icon waves-effect' do %>
+                          <i class="fa fa-trash"></i>
+                        <% end %>
+                      </td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            <% end %>
+            <%= render 'packages_events_types' %>
           </div>
           <div id="users" class="tab-pane fade">
             <div class="row">
