@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group ">
                   <%= f.label :size, "Tamanho da blusa"   %>
-                    <%= f.select :size, options_for_select(sizes_to_array), {}, class: 'form-control' %>
+                    <%= f.select :size, options_for_select(sizes_to_array, selected: resource.size), {}, class: 'form-control' %>
                 </div>
                 <div class="form-group ">
                   <%= f.label :course, "Curso"  %>
