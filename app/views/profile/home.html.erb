@@ -51,6 +51,63 @@
         <% end %>
       <% end %>
     </div>
+   <%if is_pre_week("Workshop")%>
+  <div class="gal-detail thumb"> 
+      <h4>Pré-semana: Workshop</h4>
+      <h5 > Preço: R$</h5>
+      <h5>  Data:05/11 as 8h </h5>
+       <p class="text-muted">  <%= render "profile/workshop" %> </p>
+       <%= button_to cancel_inscription_preWeek_path(:event => "Workshop"),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5", method: :put do %>
+        <i class="zmdi  zmdi-dot-circle-alt"></i>
+        <span> Cancelar inscrição</span>
+        <% end %>
+      
+    </div>
+
+
+   <%else%>
+    <div class="gal-detail thumb"> 
+      <h4>Pré-semana: Workshop</h4>
+      <h5> Preço: R$</h5>
+      <h5> Data:05/11 as 8h </h5>
+       <p class="text-muted">  <%= render "profile/workshop" %> </p>
+       <%= button_to create_inscription_preWeek_path(:event => "Workshop"),:class => "btn btn-icon waves-effect waves-light btn-success m-b-5", method: :put do %>
+        <i class="zmdi  zmdi-dot-circle-alt"></i>
+        <span> Inscreva-se</span>
+        <% end %>
+      
+    </div>
+    <%end %>
+       <%if is_pre_week("Visita")%>
+  <div class="gal-detail thumb"> 
+      <h4>Pré-semana: Visita</h4>
+      <h5 > Preço: R$</h5>
+       <p class="text-muted"> </p>
+       <%= button_to cancel_inscription_preWeek_path(:event => "Visita"),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5", method: :put do %>
+        <i class="zmdi  zmdi-dot-circle-alt"></i>
+        <span> Cancelar inscrição</span>
+        <% end %>
+      
+    </div>
+
+
+   <%else%>
+    <div class="gal-detail thumb"> 
+      <h4>Pré-semana: Visita</h4>
+      <h5 > Preço: R$</h5>
+       <p class="text-muted"> </p>
+
+       <%= button_to create_inscription_preWeek_path(:event => "Visita"),:class => "btn btn-icon waves-effect waves-light btn-success m-b-5", method: :put do %>
+        <i class="zmdi  zmdi-dot-circle-alt"></i>
+        <span> Inscreva-se</span>
+        <% end %>
+      
+    </div>
+    <%end %>
+
+
+
+
   </div>
 
   <div class="col-sm-4">

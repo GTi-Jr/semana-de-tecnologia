@@ -39,7 +39,8 @@ Rails.application.routes.draw do
     get 'my_events' => 'profile#events', as: :my_events
     get 'my_home' => 'profile#home', as: :my_home
 
-
+    put 'cancel_pre-semana' => 'profile#cancel_inscription_preWeek', as: :cancel_inscription_preWeek
+    put 'pre-semana' => 'profile#create_inscription_preWeek', as: :create_inscription_preWeek
     root 'profile#home', as: :authenticated_user_root
   end
 

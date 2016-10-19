@@ -6,4 +6,10 @@ module ProfileHelper
 			render :partial => 'profile/my_package' 
 		end
 	end		
+	
+  def is_pre_week(event)
+    user = @user
+    result = $redis.sismember "cart#{user.id}", event 
+    result  
+  end
 end
