@@ -20,11 +20,13 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 6 }, on: :create
-  validates :cpf, presence: true, length: {is: 14}
-  validates :rg, presence: true
-  validates :size, presence: true, length: {minimum: 1}
 
-  # before_save :set_package
+  VALID_CPF_REGEX = /[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/
+  VALID_RG_REGEX = /[0-9]+/
+
+  validates :cpf, presence: true, format: { with: VALID_CPF_REGEX }
+  validates :rg, presence: true, format: { with: VALID_RG_REGEX }
+  validates :size, presence: true, length: { minimum: 1 }
 
   def cart_count
     $redis.scard "cart#{id}"
