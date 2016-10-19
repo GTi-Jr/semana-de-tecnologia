@@ -2,8 +2,8 @@
 <header id="top" class="header">
   <div class="text-vertical-center">
     <div class="container">
-      <h1 class="visible-sm visible-md visible-lg"><%= current_week[:name] %></h1>
-      <h1 class="visible-xs"><%= current_week[:sigla] %></h1>
+      <h1 style="display: none !important;" class="visible-sm visible-md visible-lg"><%= current_week[:name] %></h1>
+      <h1 style="display: none !important;" class="visible-xs"><%= current_week[:sigla] %></h1>
     </div>
     <br>
     <%= link_to new_user_registration_path, class:'btn btn-dark btn-lg' do %>
@@ -12,16 +12,20 @@
     <%= link_to new_user_session_path, class:'btn btn-dark btn-lg' do %>
       Entrar no Painel
     <% end %>
+    <br>
+    <%= link_to challenge_new_team_inscription_path, class:'btn btn-dark btn-lg' do %>
+      Inscrição Concurso
+    <% end %>
   </div>
 </header>
 <!-- Services -->
 <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
 <!-- Map -->
 <section id="contact" class="map">
-  <iframe src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.3051340221245!2d-38.57751558524099!3d-3.7435564972764284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74bdbf26c061b%3A0x4ecb6baf8a653821!2sEngenharia+Civil+%2F+UFC+(Bloco+708)!5e0!3m2!1spt-BR!2sbr!4v1476839950421" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.3051340221245!2d-38.57751558524099!3d-3.7435564972764284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74bdbf26c061b%3A0x4ecb6baf8a653821!2sEngenharia+Civil+%2F+UFC+(Bloco+708)!5e0!3m2!1spt-BR!2sbr!4v1476839950421" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
   <br />
     <small>
-      <a href="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.3051340221245!2d-38.57751558524099!3d-3.7435564972764284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74bdbf26c061b%3A0x4ecb6baf8a653821!2sEngenharia+Civil+%2F+UFC+(Bloco+708)!5e0!3m2!1spt-BR!2sbr!4v1476839950421"></a>
+      <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.3051340221245!2d-38.57751558524099!3d-3.7435564972764284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74bdbf26c061b%3A0x4ecb6baf8a653821!2sEngenharia+Civil+%2F+UFC+(Bloco+708)!5e0!3m2!1spt-BR!2sbr!4v1476839950421"></a>
     </small>
   <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
 </section>
