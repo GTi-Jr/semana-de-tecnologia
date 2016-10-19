@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007024531) do
+ActiveRecord::Schema.define(version: 20161009021713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,18 +141,18 @@ ActiveRecord::Schema.define(version: 20161007024531) do
   add_index "schedules", ["event_id"], name: "index_schedules_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",            null: false
+    t.string   "encrypted_password",     default: "",            null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,             null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -163,6 +163,9 @@ ActiveRecord::Schema.define(version: 20161007024531) do
     t.string   "university"
     t.date     "birthday"
     t.boolean  "qualified"
+    t.string   "cpf",                    default: "00000000000", null: false
+    t.string   "rg",                     default: "00000000000", null: false
+    t.string   "size",                   default: "M",           null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
