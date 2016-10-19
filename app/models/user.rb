@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-
+  validates_date :birthday
+  validates :birthday, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :course, presence: true, length: { maximum: 60 }
   validates :university, presence: true, length: { maximum: 70 }

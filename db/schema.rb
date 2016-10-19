@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009021713) do
+ActiveRecord::Schema.define(version: 20161007024531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,13 +65,9 @@ ActiveRecord::Schema.define(version: 20161009021713) do
 
   create_table "event_types", force: :cascade do |t|
     t.string   "name"
-    t.integer  "limit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "package_id"
   end
-
-  add_index "event_types", ["package_id"], name: "index_event_types_on_package_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "name",                                                null: false
@@ -79,6 +75,7 @@ ActiveRecord::Schema.define(version: 20161009021713) do
     t.string   "facilitator"
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
+    t.string   "kind"
     t.decimal  "price",         precision: 8, scale: 2, default: 0.0
     t.integer  "limit",                                 default: 0,   null: false
     t.integer  "event_type_id"
@@ -144,18 +141,18 @@ ActiveRecord::Schema.define(version: 20161009021713) do
   add_index "schedules", ["event_id"], name: "index_schedules_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",            null: false
-    t.string   "encrypted_password",     default: "",            null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,             null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -166,9 +163,6 @@ ActiveRecord::Schema.define(version: 20161009021713) do
     t.string   "university"
     t.date     "birthday"
     t.boolean  "qualified"
-    t.string   "cpf",                    default: "00000000000", null: false
-    t.string   "rg",                     default: "00000000000", null: false
-    t.string   "size",                   default: "M",           null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
