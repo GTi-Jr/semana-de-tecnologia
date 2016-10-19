@@ -13,6 +13,10 @@ module ApplicationHelper
     end
   end
 
+  def date_pt(d)
+    d.strftime("%d/%m/%Y")
+  end
+
   def time_pt(dt)
     dt.strftime("%d/%m/%Y às %H:%M")
   end
