@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-
+  validates_date :birthday
+  validates :birthday, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :course, presence: true, length: { maximum: 60 }
   validates :university, presence: true, length: { maximum: 70 }
@@ -20,8 +21,6 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 6 }, on: :create
-
-  # before_save :set_package
 
   def cart_count
     $redis.scard "cart#{id}"

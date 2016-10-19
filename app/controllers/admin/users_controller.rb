@@ -23,8 +23,11 @@ class Admin::UsersController < Admin::BaseController
 
   def set_payment
     @admin_user = User.find(params[:user_id])
+    
     if @admin_user.payment.update(method: params[:payment_method], status: params[:status])
       redirect_to admin_users_path, notice: 'Pagamento alterado com sucesso!'
+    else
+      redirect_to :back
     end
   end
 

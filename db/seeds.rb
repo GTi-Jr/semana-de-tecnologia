@@ -15,15 +15,15 @@ if Rails.env.development? || Rails.env.test?
   event_type2 = EventType.create(name: 'Visita')
   event_type3 = EventType.create(name: 'Minicurso')
 
-  PackageEventType.create event_type_id: event_type1.id, package_id: package1.id, limit: 3
-  PackageEventType.create event_type_id: event_type2.id, package_id: package1.id, limit: 2
-  PackageEventType.create event_type_id: event_type3.id, package_id: package1.id, limit: 2
+  PackageEventType.create event_type_id: event_type1.id, package_id: package1.id, limit: 1
+  PackageEventType.create event_type_id: event_type2.id, package_id: package1.id, limit: 1
+  PackageEventType.create event_type_id: event_type3.id, package_id: package1.id, limit: 0
 
 
-  Event.create(name:'Evento-teste1', description:'Esse é o evento teste 1', facilitator:'SET', limit:20, price:20, event_type_id:1).schedules.create(start_time:DateTime.new(2016,9,5,10,30), end_time:DateTime.new(2016,9,5,12,30))
-  Event.create(name:'Evento-teste2', description:'Esse é o evento teste 2', facilitator:'SET', limit:20, price:20, event_type_id:2).schedules.create(start_time:DateTime.new(2016,9,5,10,30), end_time:DateTime.new(2016,9,5,13,30))
-  Event.create(name:'Evento-teste3', description:'Esse é o evento teste 3', facilitator:'SET', limit:20, price:20, event_type_id:3).schedules.create(start_time:DateTime.new(2016,9,5,10,30), end_time:DateTime.new(2016,9,5,12,30))
-  Event.create(name:'Evento-teste4', description:'Esse é o evento teste 4', facilitator:'SET', limit:20, price:20, event_type_id:1).schedules.create(start_time:DateTime.new(2016,9,5,10,30), end_time:DateTime.new(2016,9,5,12,30))
+  Event.create(name:'Evento-teste1', description:'Esse é o evento teste 1', facilitator:'SET', limit:20, price:20, event_type_id:1).schedules.create(start_time:DateTime.new(2016,9,5,12,30), end_time:DateTime.new(2016,9,5,13,30))
+  Event.create(name:'Evento-teste2', description:'Esse é o evento teste 2', facilitator:'SET', limit:20, price:20, event_type_id:2).schedules.create(start_time:DateTime.new(2016,9,5,18,30), end_time:DateTime.new(2016,9,5,19,30))
+  Event.create(name:'Evento-teste3', description:'Esse é o evento teste 3', facilitator:'SET', limit:20, price:20, event_type_id:3).schedules.create(start_time:DateTime.new(2016,9,5,22,30), end_time:DateTime.new(2016,9,5,23,30))
+  Event.create(name:'Evento-teste4', description:'Esse é o evento teste 4', facilitator:'SET', limit:20, price:20, event_type_id:1).schedules.create(start_time:DateTime.new(2016,9,5,6,30), end_time:DateTime.new(2016,9,5,7,30))
 
   @user = User.create(name: 'Rodrigo', email: 'rodrigo_tn@live.com', semester: 8, course: 'ENG COMP', university: 'UFC', birthday: '07-12-1994', password: '123456as')
   @user.confirm

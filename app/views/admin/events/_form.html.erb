@@ -30,7 +30,7 @@
   </div>
   <div class="form-group">
     <%= f.label :kind %>
-    <%= f.select :event_type_id, options_for_select(event_types_to_array), {}, class: 'form-control' %>
+    <%= f.select :event_type_id, options_for_select(event_types_to_array, selected: @event.event_type_id), {include_blank: false}, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :schedules %>

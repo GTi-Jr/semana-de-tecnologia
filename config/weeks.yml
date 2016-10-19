@@ -42,5 +42,11 @@ sepro:
   <<: *default
 seq:
   <<: *default
+  name: Semada da Engenharia Química
+  sigla: SEQ
+  colors:
+    primary: 0D5272
+    default: 0D5272
+  logo: seq-logo.png
 sea:
   <<: *default

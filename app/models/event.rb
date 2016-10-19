@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :schedules, dependent: :restrict_with_error
+  has_many :schedules, dependent: :destroy
   has_many :purchases, dependent: :restrict_with_error
   has_many :buyers, through: :purchases, dependent: :restrict_with_error
   belongs_to :event_type
@@ -24,8 +24,15 @@ class Event < ActiveRecord::Base
     kinds = Event.event_kinds
     price = Hash.new
     kinds.each do |kind|
-      event_id = EventType.find_by(name: kind)
-      price[kind] = Event.find_by(event_type_id:event_id).price
+      event_id = EventType.find_by(name:kind)
+      events = Event.where("price != 0")
+      
+      if !events.find_by(event_type_id:event_id).nil? 
+         price[kind] = events.find_by(event_type_id:event_id).price 
+      else
+        price[kind] = 0
+      end
+
     end
 
     price
@@ -95,7 +102,7 @@ class Event < ActiveRecord::Base
     kinds.each do |kind|
       count[kind] = 0
       events.each do |event|
-        count[kind] +=1 if event.event_type.name == kind
+        count[kind] +=1 if event.event_type.name == kind && event.price != 0
       end
 
 
@@ -110,14 +117,17 @@ class Event < ActiveRecord::Base
 
     current_user.get_cart_events.each { |event| event_partial_price += event.price }
 
-    current_user.package ? partial_price = event_partial_price - current_user.package.package_discount(current_user)
-    : partial_price = event_partial_price
+    if current_user.package  
+        
+         partial_price = event_partial_price - current_user.package.package_discount(current_user)
+         partial = current_user.package.plus(current_user)
+         total_price = current_user.package.price + partial
+      
 
-    if current_user.package && current_user.package.package_fit?(current_user)
-      total_price = current_user.package.price + partial_price
     else
       total_price = event_partial_price
     end
+    total_price
   end
 
   def circleColor

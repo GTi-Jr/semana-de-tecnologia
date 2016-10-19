@@ -4,6 +4,8 @@ class Purchase < ActiveRecord::Base
 
   validate :validate_limit, :validate_event_schedules
 
+  validates_uniqueness_of :buyer_id, scope: [:event_id]
+
   def self.delete_purchases(current_user, id_event)
   	self.destroy_all(buyer_id:current_user.id, event_id:id_event)
   end
@@ -25,7 +27,7 @@ class Purchase < ActiveRecord::Base
   end
 
   def validate_limit
-    errors.add("Limit", "is invalid.") unless check_limit
+    errors.add("Limite", "não é válido.") unless check_limit
   end
 
   def validate_event_schedules

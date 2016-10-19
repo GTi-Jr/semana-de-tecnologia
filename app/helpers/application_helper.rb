@@ -13,6 +13,10 @@ module ApplicationHelper
     end
   end
 
+  def date_pt(d)
+    d.strftime("%d/%m/%Y")
+  end
+
   def time_pt(dt)
     dt.strftime("%d/%m/%Y às %H:%M")
   end
@@ -25,11 +29,11 @@ module ApplicationHelper
     if %w( teams members ).include? custom_controller_path
       custom_controller_path = "challenge/#{custom_controller_path}"
     end
-    plural = custom_controller_path.classify.constantize.model_name.human count: 2
+    custom_controller_path.classify.constantize.model_name.human count: 2
   end
 
   def human_model custom_controller_path = controller_path
-    singular = custom_controller_path.classify.constantize.model_name.human
+    custom_controller_path.classify.constantize.model_name.human
   end
 
   def titulo_pagina custom_controller_path = controller.controller_name
@@ -45,5 +49,16 @@ module ApplicationHelper
 
   def action_text custom_controller_path = controller.controller_name
     "Salvar #{human_model custom_controller_path}"
+  end
+
+  def sizes_to_array
+    sizes_array = [
+      ['Selecione', nil],
+      ['PP'],
+      ['P'],
+      ['M'],
+      ['G'],
+      ['GG']
+    ]
   end
 end

@@ -36,7 +36,7 @@ class CartController < ProfileController
       case payment_params[:method]
       when @payment.accepted_payment_methods[0]
         @pag = pag_seguro(@total_price, @user)
-        byebug
+
 
         if @pag.errors.empty? && @payment.save
           redirect_to @pag.url
@@ -72,17 +72,10 @@ class CartController < ProfileController
     end
   end
 
-  def remove_payment
-    payment = @user.payment
-    if @user.payment.destroy
-      PaymentMailer.require_cancel(@user, payment).deliver_now
-      redirect_to :cart, notice: 'Compra cancelada com sucesso!'
-    end
-  end
-
   def add
     @purchase = Purchase.new(buyer_id: @user.id, event_id: params[:id])
     if @purchase.save
+      $redis.sadd current_user_cart, params[:id]
       redirect_to :back
     else
       redirect_to :back, notice: @purchase.errors.full_messages.first || 'Não há mais vagas disponíveis para este evento'
@@ -91,6 +84,7 @@ class CartController < ProfileController
 
   def remove
     Purchase.delete_purchases(current_user, params[:id])
+     $redis.srem current_user_cart, params[:id]
     redirect_to :back
   end
 
@@ -127,7 +121,7 @@ class CartController < ProfileController
       amount: value.to_f
     }
     # end
-    byebug
+
     response = payment.register
   end
 

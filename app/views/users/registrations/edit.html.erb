@@ -1,44 +1,58 @@
 <% provide(:title, "Configurações de conta") %>
-<div class="row">
-  <div class="col-sm-12">
-    <div class="card-box">
-      <div class="row">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= devise_error_messages! %>
-        <%= render 'notifications/errors' %>
-          <div class="form-group">
-            <label class="control-label" >Nome</label>
-            <%= f.text_field :name, autofocus: true, class:'form-control' %>
-          </div>
-          <div class="form-group">
-            <label class="control-label" for="example-email">Email</label>
-            <%= f.email_field :email, autofocus: true, class:'form-control' %>
-          </div>
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>
-              Currently waiting confirmation for: <%= resource.unconfirmed_email %>
-            </div>
-          <% end %>
-          <div class="form-group">
-            <label class="control-label">Nova senha  
-              <em>(mínimo 6 dígitos)</em>
-            </label>
-            <%= f.password_field :password, class:'form-control', autocomplete: "off",  placeholder:'preencha esse campo caso queira mudar sua senha ' %>
-          </div>
-          <div class="form-group">
-            <label class="control-label">Confirme sua nova senha</label>
-            <%= f.password_field :password_confirmation,class:'form-control', autocomplete: "off" %>
-          </div>
-          <div class="form-group">
-            <label class="control-label" >Senha atual</label>
-            <%= f.password_field :current_password,class:'form-control', autocomplete: "off" %>
-          </div>
-          <div class="form-group text-right">
-            <%= f.submit "Atualizar", class:'btn btn-primary' %>
-            <%= link_to "Voltar", :back, class:'btn btn-default waves-effect waves-light m-l-5' %>
-          </div>
-        <% end %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-box">
+        <div class="row">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= devise_error_messages! %>
+              <%= render 'notifications/errors' %>
+                <div class="form-group">
+                  <label class="control-label">Nome</label>
+                  <%= f.text_field :name, autofocus: true, class:'form-control' %>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="example-email">Email</label>
+                  <%= f.email_field :email, autofocus: true, class:'form-control' %>
+                </div>
+                <div class="form-group ">
+                  <%= f.label :birthday, "Aniversário"   %>
+                    <%= f.text_field :birthday, autofocus: true, class: " date form-control" %>
+                </div>
+                <div class="form-group ">
+                  <%= f.label :course, "Curso"  %>
+                    <%= f.text_field :course, autofocus: true, class: "form-control" %>
+                </div>
+                <div class="form-group ">
+                  <%= f.label :univesity, "Universidade"  %>
+                    <%= f.text_field :university, autofocus: true, class: "form-control" %>
+                </div>
+                <div class="form-group ">
+                  <%= f.label :semester, "Semestre"  %>
+                    <%= f.number_field :semester,in:1..12, autofocus: true, class: "form-control" %>
+                </div>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>
+                    Currently waiting confirmation for:
+                    <%= resource.unconfirmed_email %>
+                  </div>
+                  <% end %>
+                    <div class="form-group">
+                      <label class="control-label">Nova senha
+                        <em>(mínimo 6 dígitos)</em>
+                      </label>
+                      <%= f.password_field :password, class:'form-control', autocomplete: "off",  placeholder:'preencha esse campo caso queira mudar sua senha ' %>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Confirme sua nova senha</label>
+                      <%= f.password_field :password_confirmation,class:'form-control', autocomplete: "off" %>
+                    </div>
+
+                    <div class="form-group text-right">
+                      <%= f.submit "Atualizar", class:'btn btn-primary' %>
+                        <%= link_to "Voltar", :back, class:'btn btn-default waves-effect waves-light m-l-5' %>
+                    </div>
+                    <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>

@@ -6,7 +6,7 @@
         <div class="col-sm-6">
           <div class="m-b-30">
             <%= link_to(new_admin_event_path, class:'btn btn-primary waves-effect waves-light') do %>
-            New Event <i class="fa fa-plus"></i>
+            Criar Programação <i class="fa fa-plus"></i>
             <% end %>
           </div>
         </div>
@@ -15,10 +15,11 @@
         <table class="table table-striped" id="datatable">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Facilitator</th>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Facilitador</th>
               <th>Inscritos</th>
+              <th>Categoria</th>
               <th>Vagas restantes/Total</th>
               <th data-orderable="false"></th>
             </tr>
@@ -30,6 +31,7 @@
               <td><%= event.description %></td>
               <td><%= event.facilitator %></td>
               <td><%= event.buyers.count %></td>
+              <td><%= event.event_type.name %></td>
               <td><%= event.remaining %>/<%= event.limit %></td>
               <td>
                 <div class="btn-group m-b-10">

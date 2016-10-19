@@ -3,6 +3,8 @@ class Inscription < ActiveRecord::Base
   belongs_to :package
 
   validate :validate_limit, :validate_payment
+  
+  validates_uniqueness_of :user_id, scope: [:package_id]
 
   def check_limit
     self.package.remaining == 0 ? false : true
