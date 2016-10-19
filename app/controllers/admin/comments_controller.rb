@@ -22,7 +22,6 @@ class Admin::CommentsController < Admin::BaseController
   # POST /events
   def create
     @comment = Comment.new(comment_params)
-    byebug
     if @comment.save
       User.all.each do |user|
         NoticesMailer.send_notification(user, @comment, current_week).deliver_now
