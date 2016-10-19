@@ -2,13 +2,14 @@
   <div class="form-group">
     <label class="col-md-4 control-label">Método de pagamento </label>
     <div class="col-md-8">
-      <%= select_tag(:payment_method, options_for_select(@payment.accepted_payment_methods, {}), class:'form-control') %>
+      <%= select_tag(:payment_method, options_for_select(@payment.accepted_payment_methods, selected: @payment.method
+      ), class:'form-control') %>
     </div>
   </div>
   <div class="form-group">
     <label class="col-md-4 control-label">Status do pagamento </label>
     <div class="col-md-8">
-      <%= select_tag(:status, options_for_select(@payment.accepted_payment_status, {}), class:'form-control') %>
+      <%= select_tag(:status, options_for_select(@payment.accepted_payment_status, selected: @payment.status), class:'form-control') %>
     </div>
   </div>
   <div class="form-group">

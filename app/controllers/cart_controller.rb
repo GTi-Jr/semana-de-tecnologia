@@ -36,7 +36,7 @@ class CartController < ProfileController
       case payment_params[:method]
       when @payment.accepted_payment_methods[0]
         @pag = pag_seguro(@total_price, @user)
-        
+
 
         if @pag.errors.empty? && @payment.save
           redirect_to @pag.url
@@ -69,14 +69,6 @@ class CartController < ProfileController
   def require_change_payment
     if PaymentMailer.require_change(@user).deliver_now
       redirect_to :cart, notice: 'Sua solicitação foi enviada, aguarde contato!'
-    end
-  end
-
-  def remove_payment
-    payment = @user.payment
-    if @user.payment.destroy
-      PaymentMailer.require_cancel(@user, payment).deliver_now
-      redirect_to :cart, notice: 'Compra cancelada com sucesso!'
     end
   end
 
@@ -129,7 +121,7 @@ class CartController < ProfileController
       amount: value.to_f
     }
     # end
-  
+
     response = payment.register
   end
 
