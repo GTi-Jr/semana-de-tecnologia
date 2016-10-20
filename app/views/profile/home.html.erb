@@ -81,8 +81,9 @@
        <%if is_pre_week("Visita")%>
   <div class="gal-detail thumb"> 
       <h4>Pré-semana: Visita</h4>
-      <h5 > Preço: R$</h5>
-       <p class="text-muted"> </p>
+      <h5> Data:03/11 as 13h as 17h </h5>
+      <h5 > Preço: R$ 12,00</h5>
+       <p class="text-muted"><%= render "profile/visita" %> </p>
        <%= button_to cancel_inscription_preWeek_path(:event => "Visita"),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5", method: :put do %>
         <i class="zmdi  zmdi-dot-circle-alt"></i>
         <span> Cancelar inscrição</span>
@@ -94,8 +95,9 @@
    <%else%>
     <div class="gal-detail thumb"> 
       <h4>Pré-semana: Visita</h4>
-      <h5 > Preço: R$</h5>
-       <p class="text-muted"> </p>
+      <h5> Data:03/11 as 13h as 17h </h5>
+      <h5 > Preço: R$ 12,00</h5>
+       <p class="text-muted"> <%= render "profile/visita" %></p>
 
        <%= button_to create_inscription_preWeek_path(:event => "Visita"),:class => "btn btn-icon waves-effect waves-light btn-success m-b-5", method: :put do %>
         <i class="zmdi  zmdi-dot-circle-alt"></i>
