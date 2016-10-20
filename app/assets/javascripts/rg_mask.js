@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.rg').mask('dddddddddd', {
+    $('.rg').mask('dddddddddddddddddd', {
         'translation': {
            
             d: { pattern: /[0-9]/ }
