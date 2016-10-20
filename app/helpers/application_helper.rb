@@ -14,7 +14,11 @@ module ApplicationHelper
   end
 
   def date_pt(d)
+    if !d.nil?
     d.strftime("%d/%m/%Y")
+  else
+    'não possui aniversário'
+  end
   end
 
   def time_pt(dt)
