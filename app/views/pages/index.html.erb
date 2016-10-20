@@ -6,16 +6,23 @@
       <h1 style="display: none !important;" class="visible-xs"><%= current_week[:sigla] %></h1>
     </div>
     <br>
-    <%= link_to new_user_registration_path, class:'btn btn-dark btn-lg' do %>
+   <div class="row " style="margin-top: 100px;">
+
+    <%= link_to new_user_registration_path, class:'col s6 l6 m6 btn margin btn-dark btn-lg' do %>
       Inscreva-se
     <% end %>
-    <%= link_to new_user_session_path, class:'btn btn-dark btn-lg' do %>
+  
+
+    <%= link_to new_user_session_path, class:'col s6 l6 m6 btn btn-dark btn-lg' do %>
       Entrar no Painel
     <% end %>
+  
+    </div>
     <br>
     <%= link_to challenge_new_team_inscription_path, class:'btn btn-dark btn-lg' do %>
       Campeonato Ponte
     <% end %>
+   
   </div>
 </header>
 <!-- Services -->
