@@ -90,7 +90,7 @@
             <div class="col-md-6 col-sm-6 col-xs-6">
               <div class="clearfix m-t-40">
                 <h5 class=" text-inverse font-600">Qual a forma de pagamento?</h5>
-                <%= form_for(@payment , url: cart_checkout_path ,html: {class: 'form-horizontal '}) do |f| %>
+                <%= form_for(@payment , url: cart_checkout_path, html: {class: 'form-horizontal '}, data: {confirm: 'Tem certeza que deseja finalizar a compra?'} ) do |f| %>
                 <div class="form-group">
                   <%= f.select :method, @payment.accepted_payment_methods, {}, {class: 'form-control' } %>
                 </div>
