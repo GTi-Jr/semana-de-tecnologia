@@ -22,6 +22,13 @@ class User < ActiveRecord::Base
   validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 6 }, on: :create
 
+  validates :rg, presence: true, length: {
+    in: 4..13,
+    wrong_length: {
+      other: 'não possui o tamanho esperado (%{count} dígitos)'
+    }
+  }, numericality: { only_integer: true }
+
   def cart_count
     $redis.scard "cart#{id}"
   end
