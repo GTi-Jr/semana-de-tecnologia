@@ -23,10 +23,15 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
 
   VALID_CPF_REGEX = /[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/
-  VALID_RG_REGEX = /[0-9]+/
 
   validates :cpf, presence: true, format: { with: VALID_CPF_REGEX }
-  validates :rg, presence: true, format: { with: VALID_RG_REGEX }
+  validates :rg, presence: true, length: {
+    in: 4..13,
+    wrong_length: {
+      other: 'não possui o tamanho esperado (%{count} dígitos)'
+    }
+  }, numericality: { only_integer: true }
+
   validates :size, presence: true, length: { minimum: 1 }
 
   def cart_count
