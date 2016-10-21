@@ -41,14 +41,14 @@ class Admin::TeamsController < Admin::BaseController
   # DELETE /admin/users/1
   def destroy
     @challenge_team.destroy
-    redirect_to admin_challenge_teams_url, notice: 'Challenge::Team was successfully destroyed.'
+    redirect_to admin_teams_url, notice: 'Challenge::Team was successfully destroyed.'
   end
 
   # PATCH
   def confirm_payment
     if @challenge_team.update_attribute(:payment_status,true)
       ChallengeMailer.confirm_payment(@challenge_team).deliver_now
-      redirect_to :admin_challenge_teams
+      redirect_to :admin_teams
     end
   end
 
