@@ -1,6 +1,7 @@
 class PreWeek < ApplicationMailer
 	 def inscription(user, event)
     @user = user
+    @event = event
     mail(to: Rails.application.secrets.sender_email, from: @user.email, subject: 'Pré-semana Inscrição #{event}')
     
     $redis.sadd "cart#{@user.id}", event
@@ -13,6 +14,7 @@ class PreWeek < ApplicationMailer
   	@user = user
   	mail(to: Rails.application.secrets.sender_email, from: @user.email, subject: 'Pré-semana-Cancelamento #{event}')
     $redis.srem "cart#{@user.id}", event
+    @event = event
   end
 
 
