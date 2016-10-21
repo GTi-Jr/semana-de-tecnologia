@@ -1,5 +1,6 @@
 class CartController < ProfileController
-  before_action :verify_cart_count, only: [:create]
+  before_action :verify_cart_count, only: [:show]
+ 
   def show
     @cart_events = @user.events
     @events = Event.all

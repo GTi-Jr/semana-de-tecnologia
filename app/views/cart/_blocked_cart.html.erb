@@ -27,6 +27,7 @@
             </h4>
             <p><strong> Data: <%= time_pt @user.payment.created_at %></strong> </p>
             <p class="m-t-10"><strong> Status do pedido: </strong> <span class="label label-primary"><%= current_user.payment.status %></span></p>
+            <p class="m-t-10"><strong> Modo de pagamento: </strong> <span class="label label-primary"><%= current_user.payment.method %></span></p>
           </div>
           <div class="col-md-4">
             <% if @user.package %>
