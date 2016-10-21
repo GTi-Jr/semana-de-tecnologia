@@ -7,7 +7,7 @@ class Inscription < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: [:package_id]
 
   def check_limit
-    self.package.remaining == 0 ? false : true
+    self.package.remaining <= 0 ? false : true
   end
 
   def validate_limit
