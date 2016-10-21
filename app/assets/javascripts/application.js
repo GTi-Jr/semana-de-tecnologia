@@ -41,9 +41,9 @@
 //= require plugins/datatables/dataTables.scroller.min
 //= require plugins/toastr.min.js
 //= require carts.js
-//= require mask.js
-//= require rg_mask.js
+
 //= require modal.js
+
 
 jQuery(document).ready(function() {
   $('[data-form-prepend]').click(function(e) {

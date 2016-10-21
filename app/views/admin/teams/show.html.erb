@@ -54,11 +54,11 @@
         </div>
       </div>
       <div class="panel-footer">
-        <%= link_to 'Todos as equipes', admin_challenge_teams_path, class: 'btn btn-primary waves-effect w-md waves-light m-b-5'%>
+        <%= link_to 'Todos as equipes', admin_teams_path, class: 'btn btn-primary waves-effect w-md waves-light m-b-5'%>
         <% if  @challenge_team.payment_status %>
           <a class="btn btn-success waves-effect w-md waves-light m-b-5 disabled">Pagamento já confirmado </a>
         <% else %>
-          <%= link_to 'Confirmar pagamento', admin_challenge_team_confirm_payment_path(@challenge_team), data: { confirm: 'Tem certeza?' }, method: :post, class: 'btn btn-success waves-effect w-md waves-light m-b-5'%>
+          <%= link_to 'Confirmar pagamento', admin_team_confirm_payment_path(@challenge_team), data: { confirm: 'Tem certeza?' }, method: :post, class: 'btn btn-success waves-effect w-md waves-light m-b-5'%>
         <% end %>
       </div>
     </div>
