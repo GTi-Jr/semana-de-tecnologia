@@ -110,7 +110,8 @@
           </div>
           <div class="hidden-print">
             <div class="pull-right">
-              <%= button_tag "Finalizar compra", class:  "btn btn-custom btn-bordred btn-block waves-effect waves-light" , data: {confirm: 'Tem certeza que deseja finalizar a compra?'}   %>
+            <%= link_to 'Reset this junk', cart_path, :class => 'reset-link',:data =>{ :confirm => 'You sure you want to reset this junk?' }%>
+              <%= button_tag "Finalizar compra", class:  "reset-link btn btn-custom btn-bordred btn-block waves-effect waves-light", :data => { :confirm => 'Tem certeza que deseja finalizar a?' }  %>
               <% end %>
             </div>
           </div>
