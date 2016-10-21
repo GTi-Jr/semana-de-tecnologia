@@ -42,7 +42,6 @@
 //= require plugins/toastr.min.js
 //= require carts.js
 
-//= require modal.js
 
 
 jQuery(document).ready(function() {
