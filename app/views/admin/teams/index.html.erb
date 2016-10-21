@@ -11,7 +11,7 @@
               <th>Email Responsável</th>
               <th>Número de membros</th>
               <th>Método de Pagamento</th>
-              <th>Sttatus do Pagamento</th>
+              <th>Status do Pagamento</th>
               <th data-orderable="false"></th>
             </tr>
           </thead>
@@ -25,10 +25,10 @@
               <td><%= payment_status admin_challenge_team.payment_status %></td>
               <td class="actions pull-right">
                <div class="btn-group m-b-10">
-                  <%= link_to  admin_challenge_team_path(admin_challenge_team), class: 'btn btn-primary btn-icon waves-effect' do %>
+                  <%= link_to  admin_team_path(admin_challenge_team), class: 'btn btn-primary btn-icon waves-effect' do %>
                     <i class="fa fa-eye"></i>
                   <% end %>
-                  <%= link_to admin_challenge_team_path(admin_challenge_team), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-icon waves-effect' do %>
+                  <%= link_to admin_team_path(admin_challenge_team), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-icon waves-effect' do %>
                     <i class="fa fa-trash"></i>
                   <% end %>
                 </div>
