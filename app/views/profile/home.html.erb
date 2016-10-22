@@ -80,37 +80,19 @@
       
     </div>
     <%end %>
-       <%if is_pre_week("Visita")%>
+      
   <div class="gal-detail thumb"> 
       <h4>Pré-STEM: Visita INACE</h4>
       <h5 > Preço: R$ 12,00</h5>
       <h5> Data:03/11 as 13h as 17h </h5>
-          <h6><b>ATENÇÃO:</b>a sua vaga será confirmada mediante pagamento <b>presencial</b>, em um prazo de <b>48 horas</b>, no PET-Mecânica, ou Diferencial Jr</h6>
-      
-       <p class="text-muted"><%= render "profile/visita" %> </p>
-       <%= button_to cancel_inscription_preWeek_path(:event => "Visita"),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5", method: :put do %>
-        <i class="zmdi  zmdi-dot-circle-alt"></i>
-        <span> Cancelar inscrição</span>
-        <% end %>
-      
+            <button type="button" class="btn btn-danger waves-effect w-md waves-light m-b-5">Inscrições encerradas!</button>
+      <% if is_pre_week("Visita")%>
+    <p>Você está inscrito nessa visita! Caso queira cancelar, entrar em contato com a organização contato.stem@gmail.com</p>
+    <%end%>
     </div>
 
 
-   <%else%>
-    <div class="gal-detail thumb"> 
-      <h4>Pré-STEM: Visita  INACE</h4>
-      <h5 > Preço: R$ 12,00</h5>
-      <h5> Data:03/11 as 13h as 17h </h5>
-           <h6><b>ATENÇÃO:</b>a sua vaga será confirmada mediante pagamento <b>presencial</b>, em um prazo de <b>48 horas</b>, no PET-Mecânica, ou Diferencial Jr</h6>
-       <p class="text-muted"> <%= render "profile/visita" %></p>
 
-       <%= button_to create_inscription_preWeek_path(:event => "Visita"),:class => "btn btn-icon waves-effect waves-light btn-success m-b-5", method: :put do %>
-        <i class="zmdi  zmdi-dot-circle-alt"></i>
-        <span> Inscreva-se</span>
-        <% end %>
-      
-    </div>
-    <%end %>
 
 
 
