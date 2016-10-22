@@ -69,6 +69,7 @@
                           <th>Course</th>
                           <th>Semester</th>
                           <th>University</th>
+                          <th>Nascimento</th>
                           <th data-orderable="false"></th>
                         </tr>
                       </thead>
@@ -80,6 +81,7 @@
                           <td><%= event_user.course %></td>
                           <td><%= event_user.semester %></td>
                           <td><%= event_user.university %></td>
+                          <td><%= event_user.birthday %></td>
                           <td class="actions pull-right">
                             <%= link_to admin_user_path(event_user), class: 'badge badge-primary' do %>
                               <p>Vizualizar</p>
