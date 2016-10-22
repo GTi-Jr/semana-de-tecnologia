@@ -1,3 +1,6 @@
+
+
+<% if @eventsDays %>
 <% @eventsDays.each do |days| %>
   <div class="tab-pane fade" id="tab<%= @number%>">
     <% @scheduleHash[days].each do |schedule| %>
@@ -36,4 +39,5 @@
       <%end%>
   </div>
   <% @number = @number +1%>
+    <%end%>
     <%end%>
