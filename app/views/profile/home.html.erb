@@ -86,7 +86,9 @@
       <h5 > Preço: R$ 12,00</h5>
       <h5> Data:03/11 as 13h as 17h </h5>
             <button type="button" class="btn btn-danger waves-effect w-md waves-light m-b-5">Inscrições encerradas!</button>
-      
+      <% if is_pre_week("Visita")%>
+    <p>Você está inscrito nessa visita! Caso queira cancelar, entrar em contato com a organização contato.stem@gmail.com</p>
+    <%end%>
     </div>
 
 
