@@ -13,6 +13,7 @@
                 <h3 class="plan-title"><%=package.title%></h3>
                 <h2 class="plan-price">R$ <%= package.price%> </h4>
                 <div class="plan-duration">Vagas: <%= package.remaining %></div>
+                <div class="plan-duration">De <%= date_pt package.opening_date %> à <%= date_pt package.closure_date %></div>
               </div>
               <ul class="plan-stats list-unstyled text-center">
                 <% package.packages_events_types.each do |package_type|%>

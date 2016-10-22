@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-	before_action :authenticate_user!, :get_user
+	before_action :authenticate_user!, :get_user, :check_package
 	layout 'profile_layout'
 
   def home
@@ -15,7 +15,15 @@ class ProfileController < ApplicationController
     end
   end
 
+  private
+
   def get_user
     @user = current_user
+  end
+
+  def check_package
+    if @user.package.nil? && !(['packages', 'profile'].include? controller_path)
+      redirect_to packages_path, notice: 'Primeiro, você deve escolher um pacote.'
+    end
   end
 end
