@@ -1,24 +1,28 @@
-<h2>Change your password</h2>
+<h4 class="text-uppercase text-center font-bold m-b-0">Alterar senha</h4>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-horizontal m-t-20' }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+  <div class="form-group ">
+    <div class="col-xs-12">
+        <%= f.label :password  %><br />
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> caracteres no mínimo)</em><br />
+        <% end %>
+        <%= f.password_field :password, autofocus: true, class: "form-control", placeholder: "Nova senha" %>
+    </div>
+  </div>
+  <div class="form-group ">
+    <div class="col-xs-12">
+        <%= f.label :password_confirmation  %><br />
+        <%= f.password_field :password_confirmation, autofocus: true, class: "form-control", placeholder: "Confirme sua nova senha" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="form-group text-center m-t-30">
+    <div class="col-xs-12">
+      <%= button_tag "Salvar senha", class:  "btn btn-custom btn-bordred btn-block waves-effect waves-light", type:"submit"  %>
+    </div>
   </div>
 <% end %>
 
