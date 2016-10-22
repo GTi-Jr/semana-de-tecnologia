@@ -31,7 +31,7 @@
               <td><%= event.description %></td>
               <td><%= event.facilitator %></td>
               <td><%= event.buyers.count %></td>
-              <td><%= event.event_type.name %></td>
+              <td><%= event.event_type.try(:name) %></td>
               <td><%= event.remaining %>/<%= event.limit %></td>
               <td>
                 <div class="btn-group m-b-10">
