@@ -3,8 +3,8 @@ class PackagesController < ProfileController
   before_action :set_package, only: [:add_package]
 
   def index
-    @packages = Package.all
-    @package_1 = Package.first
+    @packages = Package.opening_packages
+    @package_1 = Package.opening_packages.first
     @user = current_user
   end
 

@@ -91,6 +91,8 @@ pt-BR:
         limit: "Número de vagas"
         price: "Preço"
         inscriptions: "Inscrições"
+        opening_date: "Abertura"
+        closure_date: "Encerramento"
       payment:
         method: "Método de pagamento"
         price: "Preço"

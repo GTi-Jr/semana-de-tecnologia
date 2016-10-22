@@ -5,7 +5,13 @@ class Package < ActiveRecord::Base
   has_many :users, through: :inscriptions, dependent: :restrict_with_error
   has_many :event_types, through: :packages_events_types, dependent: :restrict_with_error
 
-  validates_presence_of :title, :limit, :price
+  validates_presence_of :title, :limit, :price, :opening_date, :closure_date
+
+  validates_date :closure_date, after: :opening_date
+
+  def self.opening_packages
+    Package.where('? BETWEEN opening_date and closure_date', DateTime.now)
+  end
 
   def remaining
     self.limit - self.inscriptions.count

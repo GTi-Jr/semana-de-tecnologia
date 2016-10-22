@@ -55,9 +55,9 @@ class Admin::PackagesController < Admin::BaseController
     def set_package
       @package = Package.find(params[:id])
     end
-    
+
     def package_params
-      params.require(:package).permit(:title, :description, :limit, :price)
+      params.require(:package).permit(:title, :description, :limit, :price, :opening_date, :closure_date)
     end
 
     def package_event_type_params

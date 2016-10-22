@@ -36,6 +36,12 @@
                   <strong>Valor: </strong><%= @package.price %>
                 </p>
                 <p>
+                  <strong>Abertura: </strong><%= date_pt @package.opening_date %>
+                </p>
+                <p>
+                  <strong>Encenrramento: </strong><%= date_pt @package.closure_date %>
+                </p>
+                <p>
                   <strong>Total de inscritos: </strong><%= @package.users.count %>
                 </p>
                 <p>

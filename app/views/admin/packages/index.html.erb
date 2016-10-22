@@ -16,12 +16,14 @@
         <table class="table table-striped" id="datatable">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Limit</th>
+              <th>Título</th>
+              <th>Descrição</th>
+              <th>Capacidade</th>
               <th>Inscritos</th>
               <th>Programações</th>
-              <th>Price</th>
+              <th>Preço</th>
+              <th>Abertura</th>
+              <th>Encenrramento</th>
               <th data-orderable="false"></th>
             </tr>
           </thead>
@@ -38,6 +40,8 @@
                 <% end %>
               </td>
               <td><%= package.price %></td>
+              <td><%= date_pt package.opening_date %></td>
+              <td><%= date_pt package.closure_date %></td>
               <td class="actions pull-right">
                  <div class="btn-group m-b-10">
                   <%= link_to admin_package_path(package), class: 'btn btn-primary btn-icon waves-effect' do %>
