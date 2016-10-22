@@ -68,7 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 <<<<<<< HEAD
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :course, :semester, :birthday, :university, :rg, :cpf, :size])
 =======
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :course, :semester, :birthday, :university, :cpf, :rg, :size])
->>>>>>> c5055d654392df5faee1b224ee7a491c05355db1
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :course, :semester, :birthday, :university,:rg, :cpf, :size])
+>>>>>>> d6350c5cfa8bc2e687395b00c09edae44f5691e2
   end
 end
