@@ -100,7 +100,7 @@
               <% if @user.package %>
               <p> <b class=text-danger>Atenção:</b> em qualquer compra feita fora da cobertura do pacote, será cobrado o preço avulso dos eventos, exceto as que ultrapassarem as quantidades especificadas(sendo cobrado valor do pacote + o total dos eventos adicionais).</p>
               <p class="text-right"><b>Tipo de desconto:</b>
-                <%= @package.title %>
+                <%= @user.package.title %>
               </p>
               <% else %>
               <p class="m-t-10"><strong> Você não se inscreveu e nenhum pacote </strong></p>
