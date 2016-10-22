@@ -39,15 +39,10 @@
                   <% end %>
                 </p>
               </p>
-              <p class="m-t-10">
-                <strong>Eventos adicionados: </strong>
-                <%= @user_cart[:lectures]%> palestras +
-                <%= @user_cart[:courses]%> mini-cursos +
-                <%= @user_cart[:visits]%> visitas
-              </p>
+
             <% else %>
               <h4><br>
-                <strong> Compra avulsa</strong>
+                <strong> Compra sem pacote</strong>
               </h4>
             <% end %>
           </div>
@@ -68,19 +63,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @cart_events.each do |cart| %>
+                  <% @cart_events.each do |cart_event| %>
                     <tr>
                       <td>
-                        <%= cart.name %>
+                        <%= cart_event.name %>
                       </td>
                       <td>
-                        <%= cart.description%>
+                        <%= cart_event.description %>
                       </td>
                       <td>
-                        <%= cart.event_type.name %>
+                        <%= cart_event.event_type.try(:name) %>
                       </td>
                       <td>
-                        <%= cart.price %>
+                        <%= cart_event.price %>
                       </td>
                     </tr>
                     <%end%>
