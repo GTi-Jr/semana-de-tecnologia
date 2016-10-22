@@ -2,8 +2,8 @@
 <header id="top" class="header">
   <div class="text-vertical-center">
     <div class="container">
-      <h1 style="display: none !important;" class="visible-sm visible-md visible-lg"><%= current_week[:name] %></h1>
-      <h1 style="display: none !important;" class="visible-xs"><%= current_week[:sigla] %></h1>
+      <h1 class="visible-sm visible-md visible-lg"><%= current_week[:name] %></h1>
+      <h1 class="visible-xs"><%= current_week[:sigla] %></h1>
     </div>
     <br>
    <div class="row " style="margin-top: 100px;">
@@ -19,9 +19,6 @@
   
     </div>
     <br>
-    <%= link_to challenge_new_team_inscription_path, class:'col s6 l6 m6 btn btn-dark btn-lg' do %>
-      Campeonato Ponte
-       <% end %>
    
   </div>
 </header>
