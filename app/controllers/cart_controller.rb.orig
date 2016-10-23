@@ -1,4 +1,9 @@
 class CartController < ProfileController
+<<<<<<< HEAD
+  before_action :verify_cart_count, only: [:show]
+ 
+=======
+>>>>>>> 5e59f211aeaa64bdcc7847d967231a3c52aa7fa9
   def show
     @cart_events = @user.events
     @events = Event.all
@@ -74,6 +79,7 @@ class CartController < ProfileController
 
   def remove
     Purchase.delete_purchases(current_user, params[:id])
+
     redirect_to :back
   end
 

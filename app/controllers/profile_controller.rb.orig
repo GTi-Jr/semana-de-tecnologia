@@ -7,6 +7,7 @@ class ProfileController < ApplicationController
     @comments = Comment.all
   end
 
+<<<<<<< HEAD
   def verify_cart_count
     package = @user.package
     count = Event.event_kind_count(current_user)
@@ -15,6 +16,8 @@ class ProfileController < ApplicationController
     end
   end
 
+=======
+>>>>>>> 5e59f211aeaa64bdcc7847d967231a3c52aa7fa9
   def get_user
     @user = current_user
   end
