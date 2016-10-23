@@ -20,11 +20,11 @@ class PaymentMailer < ApplicationMailer
     @user = user
     @payment = payment
     @infos = infos
-    mail(to: @user.email, from: Rails.application.secrets.sender_email, subject: '[STEM]Informações de compra')
+    mail(to: @user.email, from: Rails.application.secrets.sender_email, subject: '[STEM] Informações de compra')
   end
 
   def payment_confirmation(user)
-      @user = user
-      mails(to: @user.email , from:Rails.application.secrets.sender_email, subject, subject: "[STEM] Sua inscricao esta confirmada")
-    end
+    @user = user
+    mails(to: @user.email , from: Rails.application.secrets.sender_email, subject: "[STEM] Sua inscricao esta confirmada")
+  end
 end
