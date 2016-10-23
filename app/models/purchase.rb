@@ -7,7 +7,7 @@ class Purchase < ActiveRecord::Base
   validates_uniqueness_of :buyer_id, scope: [:event_id]
 
   def self.delete_purchases(current_user, id_event)
-  	self.destroy_all(buyer_id:current_user.id, event_id:id_event)
+  	self.destroy_all(buyer_id: current_user.id, event_id: id_event)
   end
 
   private
@@ -33,7 +33,4 @@ class Purchase < ActiveRecord::Base
   def validate_event_schedules
     errors.add("Evento possui horários", "conflitantes") unless check_event_schedules.empty?
   end
-
-
-
 end
