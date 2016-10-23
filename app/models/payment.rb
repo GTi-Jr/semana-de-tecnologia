@@ -3,8 +3,6 @@ class Payment < ActiveRecord::Base
 
   validate :validate_payment_method, :validate_payment_status
 
-  validate :validate_package
-
   validate :validate_purcharses, if: :have_package?
 
   before_validation :waiting, on: :create
