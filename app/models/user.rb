@@ -30,12 +30,11 @@ class User < ActiveRecord::Base
   }, numericality: { only_integer: true }
 
   def cart_count
-    $redis.scard "cart#{id}"
+    self.events.count
   end
 
   def get_cart_events
-    cart_ids = $redis.smembers "cart#{id}"
-    Event.find(cart_ids)
+   self.events
   end
 
   def purchase_cart_events!
@@ -57,6 +56,37 @@ class User < ActiveRecord::Base
 
   def is_there_package?
     self.try(:package).nil?
+  end
+
+  def events_kind_count
+    events = self.events
+    count = Hash.new
+    kinds = Event.event_kinds
+    kinds.each do |kind|
+      count[kind] = 0
+      events.each do |event|
+        count[kind] +=1 if event.event_type.name == kind && event.price != 0
+      end
+    end
+    count
+  end
+
+  def package_fit?
+    count = self.events_kind_count
+    package = self.package
+    counter = 0
+    package.packages_events_types.each do |package_event_type|
+      name = package_event_type.event_type.name
+      if count[name] >= package_event_type.limit
+       counter +=1
+      end
+    end
+
+    if counter == package.event_types.count
+      true
+    else
+      false
+    end
   end
 
   private
