@@ -34,6 +34,9 @@
                   <% end %>
                 </p>
                 <p class="m-t-10"><strong>Eventos adicionados: </strong>
+                  <% @user_cart.each do |kind, count| %>
+                    <%= "#{count} #{kind}" %>,
+                  <% end %>
                 </p>
             <% else %>
               <p class="m-t-10"><strong> Você não se inscreveu e nenhum pacote </strong></p>
@@ -54,7 +57,7 @@
                       <th>Descrição</th>
                       <th>Tipo</th>
                       <th>Custo
-                        <%=@count%>
+                        <%= @count%>
                       </th>
                     </tr>
                   </thead>
@@ -62,7 +65,7 @@
                     <% @cart_events.each do |cart| %>
                     <tr>
                       <td>
-                        <%=cart.name%>
+                        <%=cart.name %>
                       </td>
                       <td>
                         <%=cart.description%>
