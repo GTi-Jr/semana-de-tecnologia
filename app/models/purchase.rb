@@ -27,7 +27,7 @@ class Purchase < ActiveRecord::Base
   end
 
   def validate_limit
-    errors.add("Limite", "não é válido.") unless check_limit
+    errors.add("Este evento", "não possui mais vagas.") unless check_limit
   end
 
   def validate_event_schedules
