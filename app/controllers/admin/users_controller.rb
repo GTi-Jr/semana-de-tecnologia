@@ -23,7 +23,7 @@ class Admin::UsersController < Admin::BaseController
 
   def set_payment
     @admin_user = User.find(params[:user_id])
-    
+
     if @admin_user.payment.update(method: params[:payment_method], status: params[:status])
       redirect_to admin_users_path, notice: 'Pagamento alterado com sucesso!'
     else
@@ -97,6 +97,6 @@ class Admin::UsersController < Admin::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def admin_user_params
-      params.require(:user).permit(:name, :email, :course, :semester, :birthday, :university)
+      params.require(:user).permit(:name, :email, :course, :semester, :birthday, :university, :rg, :cpf, :size)
     end
 end
