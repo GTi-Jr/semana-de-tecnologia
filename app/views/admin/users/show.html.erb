@@ -10,10 +10,13 @@
           <p class="text-muted"><strong>Email :</strong><span class="m-l-15"><%= @admin_user.email %></span></p>
 
           <p class="text-muted"><strong>Curso :</strong> <span class="m-l-15"><%= @admin_user.course %></span></p>
-
-          <p class="text-muted"><strong>Semestre :</strong> <span class="m-l-15"><%= @admin_user.semester %></span></p>
-          <p class="text-muted"><strong>Data de Nascimento :</strong> <span class="m-l-15"><%= @admin_user.birthday %></span></p>
-          <p class="text-muted"><strong>Instituição de Ensino :</strong> <span class="m-l-15"><%= @admin_user.university %></span></p>
+            <p class="text-muted"><strong>Nascimento :</strong> <span class="m-l-15"><%= @admin_user.birthday %></span></p>
+            
+         <% if @admin_user.payment%>
+ 
+          <p class="text-muted"><strong>Data da compra :</strong> <span class="m-l-15"><%= @admin_user.payment.created_at %></span></p>
+          <p class="text-muted"><strong>Total da compra:R$</strong> <span class="m-l-15"><%= @admin_user.payment.price %></span></p>
+          <%end%>
         </div>
 
       </div>

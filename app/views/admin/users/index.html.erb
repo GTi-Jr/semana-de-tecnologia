@@ -19,12 +19,12 @@
               <th>Nome</th>
               <th>Email</th>
               <th>Curso</th>
-              <th>Semestre</th>
-              <th>Data de Nascimento</th>
               <th>Universidade</th>
               <th>CPF</th>
               <th>Identidade</th>
               <th>Tam. Camisa</th>
+              <th>Total da compra</th>
+              <th>Data da compra</th>
               <th>Metodo de Pagamento</th>
               <th>Status do Pagamento</th>
               <th data-orderable="false"></th>
@@ -36,12 +36,20 @@
               <td><%= admin_user.name %></td>
               <td><%= admin_user.email %></td>
               <td><%= admin_user.course %></td>
-              <td><%= admin_user.semester %></td>
-              <td><%= date_pt admin_user.birthday %></td>
               <td><%= admin_user.university %></td>
               <td><%= admin_user.cpf %></td>
               <td><%= admin_user.rg %></td>
               <td><%= admin_user.size %></td>
+
+
+              <%if admin_user.payment %>
+               <td><%= admin_user.payment.price %></td>
+               <td><%= date_pt admin_user.payment.created_at %></td>
+              <%else%>
+               <td>não possui compra</td>
+               <td>não possui compra</td>
+              <%end%>
+
               <td><%= admin_user.payment.try(:method) %></td>
               <td><%= admin_user.payment.try(:status) %></td>
               <td class="actions pull-right">
