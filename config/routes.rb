@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   # Users auth routes
+  =begin
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     confirmations: 'users/confirmations',
@@ -54,6 +55,7 @@ Rails.application.routes.draw do
     end
 
   end
+=end
 
   # Admin auth routes
   devise_for :admin, controllers: {
