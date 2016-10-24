@@ -2,7 +2,7 @@ class Purchase < ActiveRecord::Base
 	belongs_to :event
   belongs_to :buyer, class_name: 'User'
 
-  validate :validate_limit, :validate_event_schedules
+  validate :validate_limit
 
   validates_uniqueness_of :buyer_id, scope: [:event_id]
 
@@ -10,10 +10,7 @@ class Purchase < ActiveRecord::Base
   	self.destroy_all(buyer_id: current_user.id, event_id: id_event)
   end
 
-  private
-  def check_limit
-    self.event.remaining == 0 ? false : true
-  end
+ 
 
   def check_event_schedules
     check_schedules = []
@@ -24,6 +21,13 @@ class Purchase < ActiveRecord::Base
       conflit_schedules << schedule.start_time_between
     end
     conflit_schedules.flatten & check_schedules.flatten
+  end
+
+
+
+  private
+  def check_limit
+    self.event.remaining == 0 ? false : true
   end
 
   def validate_limit
