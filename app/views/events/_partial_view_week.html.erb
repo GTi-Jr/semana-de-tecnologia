@@ -13,7 +13,11 @@
             <div class="text-left">
               <p class="text-muted font-13"><strong>Descrição da programação:</strong><span class="m-l-15"><%= schedule.event.description%></span></p>
               <p class="text-muted font-13"><strong>Vagas:</strong><span class="m-l-15"><%= schedule.event.remaining%></span></p>
+              <%if schedule.event.price!=0%>
               <p class="text-muted font-13"><strong>Preço:</strong><span class="m-l-15">R$<%= schedule.event.price%></span></p>
+              <%else%>
+                <p class="text-muted font-13"><strong>Preço:</strong><span class="m-l-15">esse evento é gratuito</span></p>
+              <%end%>
               <p class="text-muted font-13"><strong>Tipo de evento:</strong><span class="m-l-15"><%= schedule.event.event_type.name%></span></p>
               <p class="text-muted font-13"><strong>Início:</strong><span class="m-l-15"><%= schedule.start_time.strftime("%H:%M")%>h</span></p>
               <p class="text-muted font-13"><strong>Término:</strong><span class="m-l-15"><%= schedule.end_time.strftime("%H:%M")%>h</span></p>
