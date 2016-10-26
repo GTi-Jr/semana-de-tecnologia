@@ -92,9 +92,9 @@ class User < ActiveRecord::Base
 
 
 
-def fit?( package)
+def fit?( pack)
     count = self.events_kind_count
-    package = package
+    package = pack
     counter = 0
     package.packages_events_types.each do |package_event_type|
       name = package_event_type.event_type.name
@@ -115,7 +115,7 @@ def guess_package
 
   packages.each do |package|
     if self.fit?(package)
-      return package.name
+      return package
     end
   end
 end

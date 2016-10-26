@@ -1,4 +1,7 @@
 class CartController < ProfileController
+  before_action :suggestion
+
+
   def show
     @cart_events = @user.events
     @events = Event.all
@@ -76,6 +79,14 @@ class CartController < ProfileController
     Purchase.delete_purchases(current_user, params[:id])
 
     redirect_to :back
+  end
+
+  def suggestion
+    if !@user.package && @user.guess_package
+
+      flash[:notice] = "Seu carrinho se encaixa no pacote #{@user.guess_package.title}" unless @user.guess_package.limit == 0
+
+    end
   end
 
   private
