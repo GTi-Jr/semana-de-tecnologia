@@ -89,6 +89,40 @@ class User < ActiveRecord::Base
     end
   end
 
+
+
+
+def fit?( package)
+    count = self.events_kind_count
+    package = package
+    counter = 0
+    package.packages_events_types.each do |package_event_type|
+      name = package_event_type.event_type.name
+      if count[name] >= package_event_type.limit
+       counter +=1
+      end
+    end
+
+    if counter == package.event_types.count
+      true
+    else
+      false
+    end
+  end
+
+def guess_package
+  packages = Package.all
+
+  packages.each do |package|
+    if self.fit?(package)
+      return package.name
+    end
+  end
+end
+
+
+
+
   private
   def set_package
     flag = false
