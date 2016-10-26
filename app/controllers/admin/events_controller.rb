@@ -42,7 +42,7 @@ class Admin::EventsController < Admin::BaseController
   def destroy
     if @event.destroy
       redirect_to admin_events_url, notice: 'Event was successfully destroyed.'
-      erase_event_cart(@event.id)
+      
     else
       redirect_to admin_events_url, notice: @event.errors.full_messages[0]
     end

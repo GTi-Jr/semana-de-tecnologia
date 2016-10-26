@@ -42,7 +42,7 @@ sepro:
   <<: *default
 seq:
   <<: *default
-  name: Semada da Engenharia Química
+  name: Semana de Engenharia Química
   sigla: SEQ
   colors:
     primary: 0D5272

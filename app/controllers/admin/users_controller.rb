@@ -36,7 +36,7 @@ class Admin::UsersController < Admin::BaseController
     @event = Event.find(params[:id])
     if @admin_user.events.destroy(@event)
       render :show, notice: 'Usuário removido do evento!'
-      erase_event_user(@event.id, @admin_user.id)
+    
 
     end
   end
@@ -45,7 +45,7 @@ class Admin::UsersController < Admin::BaseController
     @admin_user = User.find(params[:user_id])
     if @admin_user.events.destroy_all
       render :show, notice: 'Usuário removido de todos os eventos!'
-      erase_allevent(@admin_user.id)
+     
     end
   end
 
