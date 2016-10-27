@@ -50,3 +50,9 @@ seq:
   logo: seq-logo.png
 sea:
   <<: *default
+  name: Semana de Engenharia Ambiental
+  sigla: SEA
+  colors:
+    primary: 0D5272
+    default: 0D5272
+  logo: sea-logo.png
