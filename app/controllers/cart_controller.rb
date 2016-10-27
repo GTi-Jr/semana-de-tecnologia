@@ -1,5 +1,5 @@
 class CartController < ProfileController
-  before_action :suggestion
+  before_action :suggestion, only: [:show]
 
 
   def show
@@ -82,8 +82,8 @@ class CartController < ProfileController
   end
 
   def suggestion
-    if !@user.package && @user.guess_package
-
+    if !@user.package && !@user.guess_package.nil?
+       
       flash[:notice] = "Seu carrinho se encaixa no pacote #{@user.guess_package.title}" unless @user.guess_package.limit == 0
 
     end

@@ -112,12 +112,13 @@ def fit?( pack)
 
 def guess_package
   packages = Package.all
-
+  result = nil
   packages.each do |package|
     if self.fit?(package)
-      return package
+      result = package
     end
   end
+  result
 end
 
 
