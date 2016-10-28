@@ -21,6 +21,10 @@ stem:
     default: 871328
   logo: stem-logo.png
   infos:
+    conta: 23857-X
+    agencia: 4439-3
+    beneficiado: Laylla Sharon Bezerra Peixoto
+    banco: Banco do Brasil
     local: PET da Engenharia Mecânica
 setic:
   <<: *default
