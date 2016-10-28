@@ -34,6 +34,13 @@
                   <%= f.label :semester, "Semestre"  %>
                     <%= f.number_field :semester,in:1..12, autofocus: true, class: "form-control" %>
                 </div>
+                <div class="form-group ">
+                 <div class="col-xs-12">
+                      <%= f.label :size, "Tamanho da blusa"   %><br />
+                     <%= f.select :size, options_for_select(sizes_to_array), {}, class: 'form-control' %>
+                 </div>
+                </div>
+                
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                   <div>
                     Currently waiting confirmation for:

@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
     }
   }, numericality: { only_integer: true }
 
+  validates :size, length: { minimum: 1 }
+
   def cart_count
     self.events.count
   end
