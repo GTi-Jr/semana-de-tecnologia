@@ -1,25 +1,21 @@
 <!-- Header -->
 <header id="top" class="header">
-  <div class="text-vertical-center">
-    <div class="container">
-      <h1 class="visible-sm visible-md visible-lg"><%= current_week[:name] %></h1>
-      <h1 class="visible-xs"><%= current_week[:sigla] %></h1>
-    </div>
-    <br>
-   <div class="row " style="margin-top: 100px;">
+  <div style="margin-top:30px;" class="text-vertical-center">
 
+    <br>
+   <div class="row">
     <%= link_to new_user_registration_path, class:'col s6 l6 m6 btn margin btn-dark btn-lg' do %>
       Inscreva-se
     <% end %>
-  
+
 
     <%= link_to new_user_session_path, class:'col s6 l6 m6 btn btn-dark btn-lg' do %>
       Entrar no Painel
     <% end %>
-  
+
     </div>
     <br>
-   
+
   </div>
 </header>
 <!-- Services -->
