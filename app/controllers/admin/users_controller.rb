@@ -23,7 +23,7 @@ class Admin::UsersController < Admin::BaseController
 
   def set_payment
     @admin_user = User.find(params[:user_id])
-    
+
     if @admin_user.payment.update(method: params[:payment_method], status: params[:status])
       redirect_to admin_users_path, notice: 'Pagamento alterado com sucesso!'
     else
@@ -36,7 +36,7 @@ class Admin::UsersController < Admin::BaseController
     @event = Event.find(params[:id])
     if @admin_user.events.destroy(@event)
       render :show, notice: 'Usuário removido do evento!'
-    
+
 
     end
   end
@@ -45,7 +45,7 @@ class Admin::UsersController < Admin::BaseController
     @admin_user = User.find(params[:user_id])
     if @admin_user.events.destroy_all
       render :show, notice: 'Usuário removido de todos os eventos!'
-     
+
     end
   end
 
@@ -97,6 +97,6 @@ class Admin::UsersController < Admin::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def admin_user_params
-      params.require(:user).permit(:name, :email, :course, :semester, :birthday, :university)
+      params.require(:user).permit(:name, :email, :course, :semester, :birthday, :university, :rg, :size)
     end
 end

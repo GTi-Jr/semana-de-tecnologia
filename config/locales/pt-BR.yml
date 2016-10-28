@@ -54,6 +54,8 @@ pt-BR:
       user:
         email: "Email"
         name: "Nome"
+        size: "Tamanho da Camisa"
+        rg: "Identidade"
         semester: "Semestre"
         course: "Curso"
         university: "Universidade"

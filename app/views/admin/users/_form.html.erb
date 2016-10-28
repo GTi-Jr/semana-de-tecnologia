@@ -19,6 +19,14 @@
     <%= f.text_field :email, class: 'form-control' %>
   </div>
   <div class="form-group">
+    <%= f.label :rg %>
+    <%= f.text_field :rg, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :size %>
+    <%= f.select :size, options_for_select(sizes_to_array, selected: @user.try(:size)), {}, class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :course %>
     <%= f.text_field :course, class: 'form-control' %>
   </div>
@@ -28,7 +36,7 @@
   </div>
   <div class="form-group">
     <%= f.label :birthday %>
-    <%= f.date_field :birthday, class: 'form-control date' %>
+    <%= to_date_field f, @admin_user, :birthday, class: "date form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :university %>

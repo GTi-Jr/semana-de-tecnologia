@@ -29,7 +29,23 @@ class User < ActiveRecord::Base
     }
   }, numericality: { only_integer: true }
 
-  validates :size, length: { minimum: 1 }
+  validates :size, length: { minimum: 1 }, on: :create
+
+  def reset_password(new_password, new_password_confirmation)
+    byebug
+    self.password = new_password
+    self.password_confirmation = new_password_confirmation
+
+    if valid?
+      save
+    elsif errors.messages.select { |k,v| k[/password/] }.empty?
+      # No password errors, so we write the password directly to the DB
+      update_attribute(:encrypted_password, encrypted_password)
+      true
+    else
+      false
+    end
+  end
 
   def cart_count
     self.events.count

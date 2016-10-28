@@ -16,12 +16,14 @@
         <table class="table table-striped" id="datatable">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Nome</th>
               <th>Email</th>
-              <th>Course</th>
-              <th>Semester</th>
-              <th>Birthday</th>
-              <th>University</th>
+              <th>RG</th>
+              <th>Camisa</th>
+              <th>Curso</th>
+              <th>Semestreter</th>
+              <th>Aniversário</th>
+              <th>Universidade</th>
               <th>Metodo de Pagamento</th>
               <th>Status do Pagamento</th>
               <th data-orderable="false"></th>
@@ -32,9 +34,11 @@
             <tr>
               <td><%= admin_user.name %></td>
               <td><%= admin_user.email %></td>
+              <td><%= admin_user.try(:rg) %></td>
+              <td><%= admin_user.try(:size) %></td>
               <td><%= admin_user.course %></td>
               <td><%= admin_user.semester %></td>
-              <td><%= admin_user.birthday %></td>
+              <td><%= date_pt admin_user.birthday %></td>
               <td><%= admin_user.university %></td>
               <td><%= admin_user.payment.try(:method) %></td>
               <td><%= admin_user.payment.try(:status) %></td>
