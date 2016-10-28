@@ -2,8 +2,9 @@
   <div class="pull-left">
     <h4 class=" text-inverse font-600"> FORMA DE PAGAMENTO</h4>
     <div class="form-group m-b-0">
-      <h5 class=" text-inverse font-600"><%= current_user.payment.method%></h5>
+      <h5 class=" text-inverse font-600"><%= current_user.payment.method %></h5>
     </div>
+    <p class="text-inverse">Enviar o comprovante de pagamento, instruções no email.</p>
     <div class="form-group m-b-0">
       <p class="form-control-static"><b><b>Banco:</b></b>
         <%= current_week[:infos][:banco] %>

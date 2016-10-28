@@ -1,5 +1,4 @@
 class CartController < ProfileController
-  before_action :verify_cart_count, only: [:create]
   def show
     @cart_events = @user.events
     @events = Event.all
@@ -23,19 +22,7 @@ class CartController < ProfileController
 
     if !@cart_events.empty?
       case payment_params[:method]
-      when @payment.accepted_payment_methods[0]
-
-        result = Payment.transaction do
-          @pag = pag_seguro(@total_price, @user)
-          @payment.save
-        end
-
-        if result
-          redirect_to @pag.url
-        else
-          redirect_to cart_path, notice: "Erro ao efetuar pagamento! #{@payment.errors.full_messages.first}"
-        end
-      when @payment.accepted_payment_methods[1], @payment.accepted_payment_methods[2]
+      when @payment.accepted_payment_methods[0], @payment.accepted_payment_methods[1]
         if @payment.save
           PaymentMailer.new_payment(@user, @payment).deliver_now
           PaymentMailer.info(@user, @payment, current_week[:infos]).deliver_now
@@ -43,7 +30,7 @@ class CartController < ProfileController
         else
           redirect_to cart_path, notice: "Erro ao efetuar pagamento! #{@payment.errors.full_messages.first}"
         end
-      when @payment.accepted_payment_methods[3]
+      when @payment.accepted_payment_methods[2]
         if @payment.save
           PaymentMailer.new_payment(@user, @payment).deliver_now
           PaymentMailer.info(@user, @payment, current_week[:infos]).deliver_now
