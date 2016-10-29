@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
   validates :size, length: { minimum: 1 }, on: :create
 
   def reset_password(new_password, new_password_confirmation)
-    byebug
     self.password = new_password
     self.password_confirmation = new_password_confirmation
 
