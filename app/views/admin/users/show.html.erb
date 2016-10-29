@@ -37,6 +37,7 @@
             <p class="text-muted"><strong>Status atual :</strong>
               <span class="m-l-15"><%= @payment.status %></span>
             </p>
+            <p><%= link_to 'Cancelar ordem de pagamento', admin_destroy_payment_path(@admin_user),data: { confirm: 'Tem certeza?' },  method: :patch, class:'label label-danger' %></p>
           </div>
           <%= render 'payment'%>
         <% else %>
