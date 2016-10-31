@@ -23,8 +23,9 @@ class Admin::UsersController < Admin::BaseController
 
   def set_payment
     @admin_user = User.find(params[:user_id])
-    
+
     if @admin_user.payment.update(method: params[:payment_method], status: params[:status])
+      Admin::PaymentMailer.status(@admin_user, @admin_user.payment).deliver_now
       redirect_to admin_users_path, notice: 'Pagamento alterado com sucesso!'
     else
       redirect_to :back
@@ -36,8 +37,6 @@ class Admin::UsersController < Admin::BaseController
     @event = Event.find(params[:id])
     if @admin_user.events.destroy(@event)
       render :show, notice: 'Usuário removido do evento!'
-    
-
     end
   end
 
@@ -45,7 +44,6 @@ class Admin::UsersController < Admin::BaseController
     @admin_user = User.find(params[:user_id])
     if @admin_user.events.destroy_all
       render :show, notice: 'Usuário removido de todos os eventos!'
-     
     end
   end
 
@@ -76,17 +74,6 @@ class Admin::UsersController < Admin::BaseController
   def destroy
     @admin_user.destroy
     redirect_to admin_users_url, notice: 'User was successfully destroyed.'
-  end
-
-
-
-  def erase_event_user(event_id, user_id)
-    $redis.srem "cart#{user_id}", event_id
-  end
-
-  def erase_allevent(user_id)
-    key = $redis.keys "cart#{user_id}"
-    $redis.del(key)
   end
 
   private
