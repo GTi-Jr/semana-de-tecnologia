@@ -78,6 +78,15 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_url, notice: 'User was successfully destroyed.'
   end
 
+  def destroy_payment
+     @admin_user = User.find(params[:user_id])
+    if @admin_user.payment.destroy
+    redirect_to admin_users_url, notice: 'Pagamento do usuário cancelado'
+
+    end
+  end
+
+
 
 
   def erase_event_user(event_id, user_id)

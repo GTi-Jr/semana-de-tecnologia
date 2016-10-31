@@ -86,6 +86,7 @@ Rails.application.routes.draw do
       patch 'users/:user_id/change_payment' => 'users#set_payment', as: :change_user_payment
       patch 'users/:user_id/remove_from_event/:id' => 'users#remove_from_event', as: :remove_user_from_event
       patch 'users/:user_id/remove_from_all_events' => 'users#remove_from_all_events', as: :remove_user_from_all_events
+      patch 'users/:user_id/destroy_payment' => 'users#destroy_payment', as: :destroy_payment
       resources :admins
     end
 
