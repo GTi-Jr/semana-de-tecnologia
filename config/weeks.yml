@@ -40,6 +40,9 @@ sec:
     local: PET da Engenharia Civil
 sepro:
   <<: *default
+  name: Semana de Engenharia de Produção
+  sigla: SEPRO
+  logo: sepro-logo.png
 seq:
   <<: *default
   name: Semana de Engenharia Química
@@ -50,3 +53,15 @@ seq:
   logo: seq-logo.png
 sea:
   <<: *default
+  name: Semana de Engenharia Ambiental
+  sigla: SEA
+  colors:
+    primary: 1C4359
+    default: 1C4359
+  logo: sea-logo.png
+  infos:
+    conta: 51464-0
+    agencia: 1218-1
+    beneficiado: Yuri Vasconcelos de Araújo
+    banco: Banco do Brasil
+    local: PET da Engenharia Ambiental

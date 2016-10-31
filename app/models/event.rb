@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :name, :limit, :price, :event_type_id
   validates_numericality_of :price, :limit, greater_than_or_equal_to: 0
-  validates_associated :schedules, :purchases
+  validates_associated :schedules
 
   @@foo = 0
 
