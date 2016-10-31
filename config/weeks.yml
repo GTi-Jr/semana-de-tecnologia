@@ -40,6 +40,9 @@ sec:
     local: PET da Engenharia Civil
 sepro:
   <<: *default
+  name: Semana de Engenharia de Produção
+  sigla: SEPRO
+  logo: sepro-logo.png
 seq:
   <<: *default
   name: Semana de Engenharia Química
