@@ -71,7 +71,7 @@ class CartController < ProfileController
     if @purchase.save
       redirect_to :back
       if !@purchase.check_event_schedules.empty?
-        redirect_to :back, notice:"Esse evento possui horário conflitante"
+         flash[:notice] = "ATENÇÃO: você possui um evento com horário conflitante" 
       end
     else
       redirect_to :back, notice: @purchase.errors.full_messages.first || 'Não há mais vagas disponíveis para este evento'
