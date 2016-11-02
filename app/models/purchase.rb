@@ -2,7 +2,7 @@ class Purchase < ActiveRecord::Base
 	belongs_to :event
   belongs_to :buyer, class_name: 'User'
 
-  validate :validate_limit, :validate_event_schedules
+  validate :validate_limit
 
   validates_uniqueness_of :buyer_id, scope: [:event_id]
 
