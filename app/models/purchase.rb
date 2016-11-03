@@ -10,7 +10,6 @@ class Purchase < ActiveRecord::Base
   	self.destroy_all(buyer_id: current_user.id, event_id: id_event)
   end
 
-  private
   def check_limit
     self.event.remaining == 0 ? false : true
   end
