@@ -23,6 +23,7 @@
  *= require plugins/responsive.bootstrap.min
  *= require plugins/scroller.bootstrap.min
  *= require plugins/toastr
+ *= require plugins/custombox
  *= require_self
  */
 @import "font-awesome-sprockets";
@@ -67,4 +68,16 @@
 }
 .margin {
   margin-top: 15px;
+}
+
+.truncate {
+  width: auto;
+  max-height: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.label.label-primary.event-type {
+  font-size: 1em;
 }

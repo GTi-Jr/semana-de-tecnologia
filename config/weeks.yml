@@ -43,6 +43,12 @@ sepro:
   name: Semana de Engenharia de Produção
   sigla: SEPRO
   logo: sepro-logo.png
+  infos:
+    conta: 24351-5
+    agencia: 4439-3
+    beneficiado: Adriel Guimarães Barbosa
+    banco: Banco do Brasil
+    local: 'Proativa jr (anexo bloco 711) / 14hs - 18hs / Telefone para combinar: Tayse Mesquita - 98517-4173'
 seq:
   <<: *default
   name: Semana de Engenharia Química
