@@ -1,0 +1,86 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require twitter/bootstrap
+ *= require core.less
+ *= require components.less
+ *= require icons.less
+ *= require menu.less
+ *= require responsive.less
+ *= require pages.less
+ *= require custom-fonts.less
+ *= require custom-variables.less
+ *= require plugins/buttons.bootstrap.min
+ *= require plugins/fixedHeader.bootstrap.min
+ *= require plugins/jquery.dataTables.min
+ *= require plugins/responsive.bootstrap.min
+ *= require plugins/scroller.bootstrap.min
+ *= require plugins/toastr
+ *= require plugins/custombox
+ *= require_self
+ */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.shop {
+	position:absolute;
+	height:30px;
+	width:40px;
+	top: -16px;
+	left:7px;
+	z-index: 1;
+
+	background: transparent;
+}
+
+.wrapper-page .logo {
+  max-width: 210px;
+  max-height: 150px;
+}
+
+@media (min-width: 768px) {
+  #wrapper .topbar .topbar-left .logo {
+    max-width: 150px;
+    max-height: 100px;
+  }
+  #wrapper.forced.enlarged .topbar .topbar-left .logo {
+    max-width: 70px;
+    max-height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  #wrapper .topbar .topbar-left .logo {
+    max-width: 70px;
+    max-height: 100px;
+  }
+}
+
+.wrapper-page {
+  margin: auto;
+}
+<<<<<<< HEAD
+.margin {
+  margin-top: 15px;
+}
+=======
+
+.truncate {
+  width: auto;
+  max-height: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.label.label-primary.event-type {
+  font-size: 1em;
+}
+>>>>>>> 188b2d083e45e3317f0a608ee9eb0306b13f81c2
