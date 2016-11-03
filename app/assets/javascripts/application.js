@@ -40,6 +40,8 @@
 //= require plugins/datatables/responsive.bootstrap.min
 //= require plugins/datatables/dataTables.scroller.min
 //= require plugins/toastr.min.js
+//= require plugins/custombox.js
+//= require plugins/legacy.js
 //= require carts.js
 
 jQuery(document).ready(function() {

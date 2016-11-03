@@ -27,4 +27,10 @@ class PaymentMailer < ApplicationMailer
     @user = user
     mails(to: @user.email , from: Rails.application.secrets.sender_email, subject: "[STEM] Sua inscricao esta confirmada")
   end
+
+  def status(user, payment)
+    @user = user
+    @payment = payment
+    mail(to: @user.email, from: Rails.application.secrets.sender_email, subject: '[PAGAMENTO] Status alterado')
+  end
 end
