@@ -1,39 +1,67 @@
 <% @eventsDays.each do |days| %>
   <div class="tab-pane fade" id="tab<%= @number%>">
     <% @scheduleHash[days].each do |schedule| %>
-      <div class="col-md-4">
-        <div class="text-center card-box">
-          <div>
-            <p class="font-15 m-b-30">
-               <%= schedule.event.name%>
-            </p>
-            <div class="text-left">
-              <p class="text-muted font-13"><strong>Descrição da programação:</strong><span class="m-l-15"><%= schedule.event.description%></span></p>
-              <p class="text-muted font-13"><strong>Vagas:</strong><span class="m-l-15"><%= schedule.event.remaining%></span></p>
-              <p class="text-muted font-13"><strong>Preço:</strong><span class="m-l-15">R$<%= schedule.event.price%></span></p>
-              <p class="text-muted font-13"><strong>Tipo de evento:</strong><span class="m-l-15"><%= schedule.event.event_type.name%></span></p>
-              <p class="text-muted font-13"><strong>Início:</strong><span class="m-l-15"><%= schedule.start_time.strftime("%H:%M")%>h</span></p>
-              <p class="text-muted font-13"><strong>Término:</strong><span class="m-l-15"><%= schedule.end_time.strftime("%H:%M")%>h</span></p>
+      <div class="col-md-6">
+        <div class="card-box project-box">
+          <div class="form-group">
+            <div class="label label-primary event-type"><%= schedule.event.event_type.name%></div>
+            <h4 class="m-t-0 m-b-5"><a class="text-inverse truncate"><%= schedule.event.name %></a></h4>
+
+            <p class="text-primary m-b-20 font-13">Facilitador: <%= schedule.event.facilitator %></p>
+            <p class="text-muted font-13 truncate"><%= schedule.event.description %></p>
+            <button class="pull-right font-600 btn btn-default btn-trans btn-rounded waves-effect waves-light btn-sm m-b-5" data-toggle="modal" data-target="#<%= schedule.event.id %>">Ver mais</button>
+            <ul class="list-inline">
+              <li>
+                <h3 class="m-b-0">R$ <%= schedule.event.price %></h3>
+              </li>
+              <li>
+                <h3 class="m-b-0"><%= schedule.start_time.strftime("%H:%M")%>h - <%= schedule.end_time.strftime("%H:%M")%>h</h3>
+              </li>
+            </ul>
+
+            <p class="font-600 m-b-5">Vagas restantes<span class="text-primary pull-right"><%= schedule.event.remaining %>/<%= schedule.event.limit %></span></p>
+            <div class="progress progress-bar-primary-alt progress-sm m-b-5">
+              <div class="progress-bar progress-bar-primary progress-animated wow animated animated" role="progressbar" aria-valuenow="<%= schedule.event.remaining %>" aria-valuemin="0" aria-valuemax="<%= schedule.event.limit %>" style="width: <%= (schedule.event.remaining.fdiv schedule.event.limit)*100 %>%; visibility: visible;">
+              </div><!-- /.progress-bar .progress-bar-danger -->
+            </div><!-- /.progress .no-rounded -->
+            <div id="<%= schedule.event.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title"><%= schedule.event.name %></h4>
+                  </div>
+                  <div class="modal-body">
+                    <h4>Descrição</h4>
+                    <p><%= schedule.event.description %></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
             </div>
-            <% if current_user.is_there_payment?%>
-              <% cart_action = schedule.event.cart_action(@user) %>
+            </div>
+            <div class="form-group text-center m-b-0">
+              <% if current_user.is_there_payment?%>
+                <% cart_action = schedule.event.cart_action(@user) %>
                 <% if cart_action == "Add to" %>
                   <%= button_to add_to_path(schedule.event), :class => "btn btn-icon waves-effect waves-light btn-success m-b-5",   :method => :put do %>
                     <i class=" zmdi zmdi-plus-circle-o"></i>
                     <span>Adicionar</span>
-                    <% end %>
-                      <% else %>
-                        <%= button_to remove_from_path(schedule.event),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5",  :method => :put do %>
-                          <i class="zmdi zmdi-minus-circle-outline"></i>
-                          <span> Remover</span>
-                          <% end %>
-                            <%end%>
-                              <%end%>
-          </div>
+                  <% end %>
+                <% else %>
+                  <%= button_to remove_from_path(schedule.event),:class => "btn btn-icon waves-effect waves-light btn-danger m-b-5",  :method => :put do %>
+                    <i class="zmdi zmdi-minus-circle-outline"></i>
+                    <span> Remover</span>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
         </div>
       </div>
       <!-- end col -->
       <%end%>
   </div>
   <% @number = @number +1%>
-    <%end%>
+<%end%>

@@ -72,6 +72,10 @@
 .wrapper-page {
   margin: auto;
 }
+<<<<<<< HEAD
+.margin {
+  margin-top: 15px;
+=======
 
 .truncate {
   width: auto;
@@ -83,4 +87,5 @@
 
 .label.label-primary.event-type {
   font-size: 1em;
+>>>>>>> 188b2d083e45e3317f0a608ee9eb0306b13f81c2
 }

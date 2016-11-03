@@ -22,4 +22,10 @@ class PaymentMailer < ApplicationMailer
     @infos = infos
     mail(to: @user.email, from: Rails.application.secrets.sender_email, subject: 'Informações de pagamento')
   end
+
+  def status(user, payment)
+    @user = user
+    @payment = payment
+    mail(to: @user.email, from: Rails.application.secrets.sender_email, subject: '[PAGAMENTO] Status alterado')
+  end
 end
