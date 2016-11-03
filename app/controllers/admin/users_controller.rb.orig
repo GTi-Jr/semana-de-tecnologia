@@ -23,7 +23,7 @@ class Admin::UsersController < Admin::BaseController
 
   def set_payment
     @admin_user = User.find(params[:user_id])
-    
+
     if @admin_user.payment.update(method: params[:payment_method], status: params[:status])
       Admin::PaymentMailer.status(@admin_user, @admin_user.payment).deliver_now
       redirect_to admin_users_path, notice: 'Pagamento alterado com sucesso!'
@@ -37,8 +37,11 @@ class Admin::UsersController < Admin::BaseController
     @event = Event.find(params[:id])
     if @admin_user.events.destroy(@event)
       render :show, notice: 'Usuário removido do evento!'
-    
+<<<<<<< HEAD
 
+
+=======
+>>>>>>> 188b2d083e45e3317f0a608ee9eb0306b13f81c2
     end
   end
 
@@ -46,7 +49,10 @@ class Admin::UsersController < Admin::BaseController
     @admin_user = User.find(params[:user_id])
     if @admin_user.events.destroy_all
       render :show, notice: 'Usuário removido de todos os eventos!'
-     
+<<<<<<< HEAD
+
+=======
+>>>>>>> 188b2d083e45e3317f0a608ee9eb0306b13f81c2
     end
   end
 
@@ -79,6 +85,7 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_url, notice: 'User was successfully destroyed.'
   end
 
+<<<<<<< HEAD
   def destroy_payment
      @admin_user = User.find(params[:user_id])
     if @admin_user.payment.destroy
@@ -99,6 +106,8 @@ class Admin::UsersController < Admin::BaseController
     $redis.del(key)
   end
 
+=======
+>>>>>>> 188b2d083e45e3317f0a608ee9eb0306b13f81c2
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_user
