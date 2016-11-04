@@ -4,6 +4,6 @@ class Admin::RegistrationMailer < ApplicationMailer
   def welcome(user, generated_password)
     @user = user
     @password = generated_password
-    mail(to: @user.try(:name) || @user.email, subject: 'Sua conta foi criada, verifique sua senha e troque-a.')
+    mail(to: @user.email, subject: 'Sua conta foi criada, verifique sua senha e troque-a.')
   end
 end
