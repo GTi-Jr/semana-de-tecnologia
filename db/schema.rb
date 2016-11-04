@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20161022170738) do
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
     t.decimal  "price",        precision: 8, scale: 2, default: 0.0
-    t.date     "opening_date",                         default: '2016-10-22', null: false
-    t.date     "closure_date",                         default: '2016-10-23', null: false
+    t.date     "opening_date",                         default: '2016-11-04', null: false
+    t.date     "closure_date",                         default: '2016-11-05', null: false
   end
 
   create_table "packages_events_types", force: :cascade do |t|
