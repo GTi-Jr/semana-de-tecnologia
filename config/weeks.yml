@@ -24,6 +24,18 @@ stem:
     local: PET da Engenharia Mecânica
 setic:
   <<: *default
+  name: Semana da Tecnologia da Informação e da Comunicação
+  sigla: SETIC
+  colors:
+    primary: 871328
+    default: 871328
+  logo: setic-logo.png
+  infos:
+    conta: 22887-7
+    agencia: 4439-3
+    beneficiado: Henrique Andrade
+    banco: Banco do Brasil
+    local: Departamento de Engenharia de Teleinformática - Bloco 725 - PET
 sec:
   <<: *default
   name: Semana de Engenharia Civil
