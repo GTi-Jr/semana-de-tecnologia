@@ -20,6 +20,20 @@
 
 <div class="form-group ">
     <div class="col-xs-12">
+        <%= f.label :rg, "Identidade"  %><br />
+        <%= f.text_field :rg, autofocus: true, class: "form-control" %>
+    </div>
+</div>
+
+<div class="form-group ">
+    <div class="col-xs-12">
+        <%= f.label :size, "Tamanho da blusa"   %><br />
+        <%= f.select :size, options_for_select(sizes_to_array), {}, class: 'form-control' %>
+    </div>
+</div>
+
+<div class="form-group ">
+    <div class="col-xs-12">
         <%= f.label :course, "Curso"  %><br />
         <%= f.text_field :course, autofocus: true, class: "form-control" %>
     </div>

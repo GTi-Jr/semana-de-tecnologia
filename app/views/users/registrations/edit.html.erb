@@ -18,6 +18,17 @@
                   <%= f.label :birthday, "Aniversário"   %>
                     <%= f.text_field :birthday, autofocus: true, class: " date form-control" %>
                 </div>
+
+                <div class="form-group">
+                  <label class="control-label">RG</label>
+                  <%= f.text_field :rg, autofocus: true, class:'form-control' %>
+                </div>
+
+                <div class="form-group ">
+                  <%= f.label :size, "Tamanho da blusa"   %><br />
+                  <%= f.select :size, options_for_select(sizes_to_array, selected: resource.size), {}, class: 'form-control' %>
+                </div>
+
                 <div class="form-group ">
                   <%= f.label :course, "Curso"  %>
                     <%= f.text_field :course, autofocus: true, class: "form-control" %>

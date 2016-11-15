@@ -22,6 +22,15 @@ class User < ActiveRecord::Base
   validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 6 }, on: :create
 
+   validates :rg, presence: true, on: :create, length: {
+    in: 4..13,
+    wrong_length: {
+      other: 'não possui o tamanho esperado (%{count} dígitos)'
+    }
+  }, numericality: { only_integer: true }
+
+  validates :size, length: { minimum: 1 }, on: :create
+
   def cart_count
     self.events.count
   end
@@ -58,7 +67,7 @@ class User < ActiveRecord::Base
     kinds.each do |kind|
       count[kind] = 0
       events.each do |event|
-        count[kind] +=1 if event.event_type.name == kind && event.price != 0
+        count[kind] +=1 if event.event_type.name == kind 
       end
     end
     count
