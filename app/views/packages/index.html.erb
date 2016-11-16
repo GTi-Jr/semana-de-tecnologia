@@ -5,36 +5,42 @@
   <div class="col-md-12">
     <div class="row">
       <!--Pricing Column-->
-      <% @packages.each do |package| %>
-        <article class="pricing-column col-md-4">
-          <div class="inner-box card-box">
-            <div class="plan-header text-center">
-              <h3 class="plan-title"><%=package.title%></h3>
-              <h2 class="plan-price">R$ <%= package.price%> </h4>
-              <div class="plan-duration">Vagas: <%= package.remaining %></div>
-            </div>
-            <ul class="plan-stats list-unstyled text-center">
-              <% package.packages_events_types.each do |package_type|%>
-                <li> <%= package_type.event_type.name %> (<%= package_type.limit %>) </li>
-              <%end%>
-            </ul>
-            <div class="text-center">
-              <% if @user.package == package %>
-                <%= link_to remove_package_path(package), class:  "btn btn-success btn-bordred btn-rounded waves-effect waves-light", method: :patch do %>
-                  <span> Pacote já escolhido - remover </span>
+      <% if @packages.count >= 1 %>
+        <% @packages.each do |package| %>
+          <article class="pricing-column col-md-4">
+            <div class="inner-box card-box">
+              <div class="plan-header text-center">
+                <h3 class="plan-title"><%=package.title%></h3>
+                <h2 class="plan-price">R$ <%= package.price%> </h4>
+                <div class="plan-duration">Vagas: <%= package.remaining %></div>
+              </div>
+              <ul class="plan-stats list-unstyled text-center">
+                <% package.packages_events_types.each do |package_type|%>
+                  <li> <%= package_type.event_type.name %> (<%= package_type.limit %>) </li>
+                <%end%>
+              </ul>
+              <div class="text-center">
+                <% if @user.package == package %>
+                  <%= link_to remove_package_path(package), class:  "btn btn-success btn-bordred btn-rounded waves-effect waves-light", method: :patch do %>
+                    <span> Pacote já escolhido - remover </span>
+                  <% end %>
+                <% elsif package.remaining == 0%>
+                     <a class="btn btn-danger btn-bordred btn-rounded waves-effect waves-light disabled">
+                    <span> Esse pacote não possui mais vagas </span>
+                  </a>
+                <% else %>
+                  <%= link_to add_package_path(package), class:  "btn btn-custom btn-bordred btn-rounded waves-effect waves-light", method: :patch do %>
+                    <span> Escolher este pacote </span>
+                  <% end %>
                 <% end %>
-              <% elsif package.remaining == 0%>
-                   <a class="btn btn-danger btn-bordred btn-rounded waves-effect waves-light disabled">
-                  <span> Esse pacote não possui mais vagas </span>
-                </a>
-              <% else %>
-                <%= link_to add_package_path(package), class:  "btn btn-custom btn-bordred btn-rounded waves-effect waves-light", method: :patch do %>
-                  <span> Escolher este pacote </span>
-                <% end %>
-              <% end %>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        <% end %>
+      <% else %>
+      <div class="container text-center">
+        <h3> Nenhum pacote está disponível no momento </h3>
+      </div>
       <% end %>
     </div>
     <!-- end row -->

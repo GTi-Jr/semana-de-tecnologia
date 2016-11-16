@@ -84,8 +84,11 @@ Rails.application.routes.draw do
       resources :teams, except: [:new, :create, :edit, :update], scope: "teams"
       post 'teams/:id/confirm_payment' => 'teams#confirm_payment', as: :team_confirm_payment
       patch 'users/:user_id/change_payment' => 'users#set_payment', as: :change_user_payment
+      patch 'users/:user_id/remove_payment' => 'users#remove_payment', as: :remove_user_payment
+
       patch 'users/:user_id/remove_from_event/:id' => 'users#remove_from_event', as: :remove_user_from_event
       patch 'users/:user_id/remove_from_all_events' => 'users#remove_from_all_events', as: :remove_user_from_all_events
+
       resources :admins
     end
 

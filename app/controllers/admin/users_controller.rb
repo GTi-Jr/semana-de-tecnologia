@@ -32,6 +32,16 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
+  def remove_payment
+    @admin_user = User.find(params[:user_id])
+
+    if @admin_user.payment.destroy
+      redirect_to admin_users_path, notice: 'Pagamento cancelado com sucesso!'
+    else
+      redirect_to :back
+    end
+  end
+
   def remove_from_event
     @admin_user = User.find(params[:user_id])
     @event = Event.find(params[:id])

@@ -13,10 +13,11 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-10 col-sm-2">
-      <button type="submit" class="btn btn-primary">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary pull-right">
         Salvar
       </button>
+      <%= link_to "Cancelar pagamento", admin_remove_user_payment_path(@admin_user), method: :patch, data: { confirm: "Tem certeza que dejesa cancelar a compra do usuário #{ @admin_user.name }?" }, class:"btn btn-danger pull-left" %>
     </div>
   </div>
 <% end %>

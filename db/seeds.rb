@@ -8,8 +8,8 @@
 
 if Rails.env.development? || Rails.env.test?
   package1 = Package.create(title:'Ouro', description:'Este é o pacote ouro', price:50, limit:50)
-  package2 = Package.create(title:'Prata', description:'Este é o pacote prata', price:40, limit:50)
-  package3 = Package.create(title:'Bronze', description:'Este é o pacote bronze', price:30, limit:50)
+  # package2 = Package.create(title:'Prata', description:'Este é o pacote prata', price:40, limit:50)
+  # package3 = Package.create(title:'Bronze', description:'Este é o pacote bronze', price:30, limit:50)
 
   event_type1 = EventType.create(name: 'Palestra')
   event_type2 = EventType.create(name: 'Visita')

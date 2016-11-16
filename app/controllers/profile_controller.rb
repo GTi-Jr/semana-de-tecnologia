@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
-	before_action :authenticate_user!, :get_user
-	layout 'profile_layout'
+  before_action :authenticate_user!, :get_user
+  layout 'profile_layout'
 
   def home
     @user_package = @user.package
