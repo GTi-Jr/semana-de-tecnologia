@@ -58,6 +58,6 @@ class Payment < ActiveRecord::Base
   end
 
   def validate_purcharses
-    errors.add("Seu pacote","não está completo.") unless self.user.package_fit?
+    errors.add("Sua programação","não é compatível com o pacote escolhido.") unless self.user.package_fit?
   end
 end
