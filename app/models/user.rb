@@ -77,14 +77,19 @@ class User < ActiveRecord::Base
     count = self.events_kind_count
     package = self.package
     counter = 0
+    counter2 = 0
     package.packages_events_types.each do |package_event_type|
       name = package_event_type.event_type.name
       if count[name] == package_event_type.limit 
        counter +=1
+       count[name] = count[name] - package_event_type.limit
       end
     end
+    count.each do |sum|
+      counter2 += sum
+    end
 
-    if counter == package.event_types.count && package.event_types.count == count.keys.count 
+    if counter == package.event_types.count  && counter2 == 0
       true
     else
       false
