@@ -76,6 +76,7 @@ class User < ActiveRecord::Base
   def package_fit?
     count = self.events_kind_count
     package = self.package
+    kinds = Event.event_kinds
     counter = 0
     counter2 = 0
     package.packages_events_types.each do |package_event_type|
@@ -85,8 +86,8 @@ class User < ActiveRecord::Base
        count[name] = count[name] - package_event_type.limit
       end
     end
-    count.each do |sum|
-      counter2 += sum
+    kinds.each do |kind|
+      counter2 += count[kind]
     end
 
     if counter == package.event_types.count  && counter2 == 0
