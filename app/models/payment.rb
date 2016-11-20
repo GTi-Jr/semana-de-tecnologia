@@ -10,7 +10,7 @@ class Payment < ActiveRecord::Base
   before_validation :waiting, on: :create
 
   def accepted_payment_methods
-    ['PagSeguro']
+    ['Presencial']
   end
 
   def accepted_payment_status
