@@ -66,9 +66,8 @@
                         <tr>
                           <th>Name</th>
                           <th>Email</th>
-                          <th>Course</th>
-                          <th>Semester</th>
-                          <th>University</th>
+                          <th>Rg</th>
+                         
                           <th>Status do pagamento</th>
                           <th data-orderable="false"></th>
                         </tr>
@@ -78,9 +77,7 @@
                         <tr>
                           <td><%= event_user.name %></td>
                           <td><%= event_user.email %></td>
-                          <td><%= event_user.course %></td>
-                          <td><%= event_user.semester %></td>
-                          <td><%= event_user.university %></td>
+                          <td><%= event_user.rg %></td>
                           <%if event_user.payment %>
                           <td><%= event_user.payment.status %></td>
                          
