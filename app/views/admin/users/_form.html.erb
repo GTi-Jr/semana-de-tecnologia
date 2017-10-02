@@ -28,6 +28,12 @@
 
   </div>
   <div class="form-group ">
+      <div class="col-xs-12">
+          <%= f.label :cel, "Celular"   %><br />
+          <%= f.text_field :cel, autofocus: true, class: " form-control" %>
+      </div>
+  </div>
+  <div class="form-group ">
     <%= f.label :size, "Tamanho da blusa"   %>
       <%= f.select :size, options_for_select(sizes_to_array, selected: @admin_user.size), {}, class: 'form-control' %>
   </div>

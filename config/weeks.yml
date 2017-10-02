@@ -38,7 +38,7 @@ sec:
     beneficiado: Francisco R S T FH
     banco: Banco do Brasil
     local: PET da Engenharia Civil
-sepro:
+sep:
   <<: *default
   name: Semana de Engenharia de Produção
   sigla: SEPRO

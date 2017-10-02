@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   validates_date :birthday
   validates :birthday, presence: true
+  validates :cel, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :course, presence: true, length: { maximum: 60 }
   validates :university, presence: true, length: { maximum: 70 }
