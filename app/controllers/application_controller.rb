@@ -4,3 +4,6 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   protect_from_forgery with: :exception
 end
+
+
+#Event.reflect_on_all_associations.select { |a| a.options[:dependent] == :destroy }.map(&:name)

@@ -25,15 +25,15 @@ class User < ActiveRecord::Base
 
   VALID_CPF_REGEX = /[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/
 
-  validates :cpf, presence: true, format: { with: VALID_CPF_REGEX }
-  validates :rg, presence: true, length: {
+  validates :cpf, presence:  { message: "^CPF não pode ficar em branco " }, format: { with: VALID_CPF_REGEX }
+  validates :rg, presence:  { message: "^RG não pode ficar em branco " }, length: {
     in: 4..13,
     wrong_length: {
       other: 'não possui o tamanho esperado (%{count} dígitos)'
     }
   }, numericality: { only_integer: true }
 
-  validates :size, presence: true, length: { minimum: 1 }
+  validates :size, presence: { message: "^Tamanho não pode ficar em branco " }, length: { minimum: 1 }
 
   def cart_count
     self.events.count

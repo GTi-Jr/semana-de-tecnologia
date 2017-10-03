@@ -47,7 +47,7 @@ gem 'validates_timeliness', '~> 4.0'
 
 gem 'web-console', '~> 2.0', group: :development
 
-
+gem 'custom_error_message'
 group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

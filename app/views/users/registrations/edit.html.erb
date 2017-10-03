@@ -28,10 +28,8 @@
 
                 </div>
                 <div class="form-group ">
-                    <div class="col-xs-12">
                         <%= f.label :cel, "Celular"   %><br />
                         <%= f.text_field :cel, autofocus: true, class: " form-control" %>
-                    </div>
                 </div>
                 <div class="form-group ">
                   <%= f.label :size, "Tamanho da blusa"   %>
@@ -62,9 +60,7 @@
                       <%= f.password_field :password, class:'form-control', autocomplete: "off",  placeholder:'preencha esse campo caso queira mudar sua senha ' %>
                     </div>
                     <div class="form-group">
-                      <label class="control-label">Confirme sua nova senha</label>
-                      <%= f.password_field :password_confirmation,class:'form-control', autocomplete: "off" %>
-                    </div>
+                   
 
                     <div class="form-group text-right">
                       <%= f.submit "Atualizar", class:'btn btn-primary' %>
