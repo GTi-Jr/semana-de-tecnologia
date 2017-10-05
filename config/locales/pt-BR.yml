@@ -59,6 +59,7 @@ pt-BR:
         university: "Universidade"
         birthday: "Data de nascimento"
         password: "Senha"
+        current_password: "Senha Atual"
         password_confirmation: "Confirmação de senha"
       challenge/team:
         name: "Nome"

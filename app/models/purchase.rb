@@ -11,8 +11,10 @@ class Purchase < ActiveRecord::Base
   end
 
   private
-  def check_limit
-    self.event.remaining == 0 ? false : true
+  def is_full?
+    #self.event.remaining <= 0
+    #users.count >= limit
+    self.event.purchases.count >= self.event.limit 
   end
 
   def check_event_schedules
@@ -27,7 +29,7 @@ class Purchase < ActiveRecord::Base
   end
 
   def validate_limit
-    errors.add("Este evento", "não possui mais vagas.") unless check_limit
+    errors.add("Este evento", "não possui mais vagas.") if is_full?
   end
 
   def validate_event_schedules

@@ -6,12 +6,13 @@ class Inscription < ActiveRecord::Base
 
   validates_uniqueness_of :user_id, scope: [:package_id]
 
-  def check_limit
-    self.package.remaining <= 0 ? false : true
+  def is_full?
+    #self.package.remaining <= 0 ? false : true
+    self.package.inscriptions.count >= self.package.limit 
   end
 
   def validate_limit
-    errors.add("Pacote", "está cheio.") unless check_limit
+    errors.add("Pacote", "está cheio.") if is_full?
   end
 
   def validate_payment

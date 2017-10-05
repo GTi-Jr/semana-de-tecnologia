@@ -60,9 +60,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-   def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :course, :semester, :birthday, :university, :rg, :cpf, :size, :cel])

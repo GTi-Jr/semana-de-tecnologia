@@ -10,8 +10,11 @@ class PackagesController < ProfileController
 
   def add_package
     if @user.package
-      @user.inscription.update_attribute(:package_id, @package.id)
-      redirect_to :my_home, notice: 'Pacote escolhido com sucesso!'
+      if @user.inscription.update_attributes(package_id: @package.id)
+        redirect_to :my_home, notice: 'Pacote escolhido com sucesso!'
+      else
+        redirect_to :packages, notice: @user.inscription.errors.full_messages.first
+      end
     else
       @inscription = Inscription.new(user: @user, package: @package)
       if @inscription.save
