@@ -1,1 +1,1 @@
-web: bin/rails server -p $PORT
+web: bin/start-pgbouncer-stunnel bundle exec puma -C config/puma.rb

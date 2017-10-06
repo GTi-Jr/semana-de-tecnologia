@@ -1,0 +1,51 @@
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
+threads threads_count, threads_count
+
+rackup DefaultRackup
+
+# Specifies the `port` that Puma will listen on to receive requests, default is 3000.
+#
+port        ENV.fetch("PORT") { 3000 }
+
+# Specifies the `environment` that Puma will run in.
+#
+environment ENV.fetch("RAILS_ENV") { "development" }
+
+
+# Especifica o número de `workers 'para inicializar no modo agrupado.
+# Os workers são processos de webserver bifurcados. Se estiver usando threads e workers juntos
+# A concorrência do aplicativo Seria o máximo de "threads" * "workers".
+# workers não trabalham no JRuby ou no Windows (ambos não suportam  Processos).
+#
+
+workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+
+# Use the `preload_app!` method when specifying a `workers` number.
+# This directive tells Puma to first boot the application and load code
+# before forking the application. This takes advantage of Copy On Write
+# process behavior so workers use less memory. If you use this option
+# you need to make sure to reconnect any threads in the `on_worker_boot`
+# block.
+#
+preload_app!
+
+# The code in the `on_worker_boot` will be called if you are using
+# clustered mode by specifying a number of `workers`. After each worker
+# process is booted this block will be run, if you are using `preload_app!`
+# option you will want to use this block to reconnect to any threads
+# or connections that may have been created at application boot, Ruby
+# cannot share connections between processes.
+#
+# on_worker_boot do
+#   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+# end
+
+# Allow puma to be restarted by `rails restart` command.
+plugin :tmp_restart
+
+on_worker_boot do
+  #
+  #delayedjob_pid ||= spawn("bundle exec rake jobs:work")
+  # worker specific setup
+  ActiveRecord::Base.establish_connection
+end

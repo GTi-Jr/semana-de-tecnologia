@@ -35,7 +35,8 @@ gem 'pg'
 
 gem 'rollbar'
 
-gem 'thin'
+#gem 'thin'
+gem 'puma', '~> 3.0'
 
 gem 'redis', '~> 3.3.0'
 
